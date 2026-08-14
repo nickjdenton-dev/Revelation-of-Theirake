@@ -2516,10 +2516,27 @@ function lexXmlToHtml(el){
 const LEXCACHE={};
 async function lookup(word){
   const ck=stripAcc(word); if(LEXCACHE[ck]) return LEXCACHE[ck];
+
+  /* Ask our own lexicon for the word exactly as it stands, before anything
+     else. Most words on this map are already in dictionary form, and the
+     endpoint does its own final-sigma, homonym-digit and adjective handling.
+     Going to the morphology service first cost a network round trip on every
+     single hover to answer a question that had usually already been answered. */
+  try{
+    const direct=await fromJDP(word);
+    if(direct&&((direct.entries&&direct.entries.length)||(direct.short&&direct.short.length>1))){
+      direct.via='as written'; direct.tried=[];
+      return LEXCACHE[ck]=direct;
+    }
+  }catch(e){}
+
   const {lemmas,via}=await lemmatise(word);
   const tried=[];
   for(const lem of lemmas.slice(0,6)){
-    for(const [name,fn] of [['jdp',fromJDP],['lsj.gr',fromLsjGr],['perseus',fromPerseusLex]]){
+    /* lsj.gr is not in this list. It sends no CORS header, so every call from
+       a browser fails with a network error rather than a 404 — it was never
+       reachable from here, and it cost a timeout per lemma to find that out. */
+    for(const [name,fn] of [['jdp',fromJDP],['perseus',fromPerseusLex]]){
       try{ const r=await fn(lem); if(r&&((r.entries&&r.entries.length)||(r.short&&r.short.length>1)||(r.html&&r.html.replace(/<[^>]*>/g,'').trim().length>12))){
         r.via=via; r.tried=tried; return LEXCACHE[ck]=r; } }
       catch(e){}
