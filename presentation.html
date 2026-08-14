@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ΘΗΡΙΑΚΗ — The Beast-Medicine · a talk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600&family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+ --ink:#0b090f;--ink2:#15121c;--bone:#efe6d4;--bone-dim:#b5a992;
+ --gold:#d9ab4e;--gold-dim:#8a6a28;--terra:#c8643c;--vio:#c9a2e8;--verd:#6fa88a;--rose:#c8566f;--lapis:#5c8fc9;
+ --serif:"EB Garamond","Cormorant Garamond",Cardo,Georgia,"Palatino Linotype","Times New Roman",serif;
+ --disp:"Cinzel","EB Garamond",Georgia,serif;
+ --s:1;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;overflow:hidden}
+body{background:var(--ink);color:var(--bone);font-family:var(--serif);line-height:1.55;
+ background-image:radial-gradient(1200px 800px at 15% 5%,rgba(217,171,78,.10),transparent 60%),
+   radial-gradient(1000px 800px at 85% 25%,rgba(154,124,196,.09),transparent 60%),
+   radial-gradient(900px 700px at 60% 95%,rgba(200,100,60,.07),transparent 60%);}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.13;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");}
+
+#stage{position:fixed;inset:0 0 46px 0;overflow:hidden}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:calc(46px*var(--s)) clamp(22px,5vw,80px) 40px;
+ display:flex;flex-direction:column;justify-content:center;opacity:0;pointer-events:none;transition:opacity .28s}
+.slide.on{opacity:1;pointer-events:auto}
+.slide.drawer{padding-bottom:38vh;justify-content:flex-start;padding-top:calc(30px*var(--s))}
+.wrap{width:100%;max-width:1180px;margin:0 auto}
+.eyebrow{font-family:var(--disp);font-size:calc(10.5px*var(--s));letter-spacing:.28em;color:var(--gold-dim);margin-bottom:14px}
+h1.t{font-family:var(--disp);font-weight:700;font-size:calc(76px*var(--s));letter-spacing:.1em;color:var(--gold);
+ margin:0 0 6px;line-height:1.05;text-shadow:0 0 50px rgba(217,171,78,.28)}
+h2.h{font-family:var(--disp);font-weight:700;font-size:calc(46px*var(--s));letter-spacing:.03em;color:var(--gold);margin:0 0 6px;line-height:1.12}
+.sub{font-family:var(--serif);font-style:italic;font-size:calc(21px*var(--s));color:var(--bone-dim);margin:0 0 26px;line-height:1.45;max-width:44em}
+.big{font-family:var(--disp);font-weight:500;font-size:calc(50px*var(--s));line-height:1.2;letter-spacing:.01em;color:#f3e9d6;margin:0 0 22px;max-width:22em}
+.bigsub{font-size:calc(21px*var(--s));color:var(--bone-dim);max-width:38em;line-height:1.55}
+ul.pts{list-style:none;padding:0;margin:12px 0 0}
+ul.pts li{position:relative;padding:9px 0 9px 30px;font-size:calc(22px*var(--s));line-height:1.5;color:#e4dccb;
+ border-bottom:1px solid rgba(217,171,78,.1)}
+ul.pts li:before{content:"◆";position:absolute;left:0;color:var(--gold-dim);font-size:calc(12px*var(--s));top:16px}
+.gk{border-left:3px solid var(--gold-dim);padding:16px 0 16px 26px;margin:8px 0 0}
+.gk .g{font-size:calc(38px*var(--s));line-height:1.4;color:#f8efdb;letter-spacing:.01em}
+.gk .tr{font-style:italic;font-size:calc(23px*var(--s));color:var(--bone-dim);margin-top:16px;line-height:1.45}
+.gk .c{font-family:var(--disp);font-size:calc(11px*var(--s));letter-spacing:.19em;color:var(--gold-dim);margin-top:16px}
+.lead{font-style:italic;font-size:calc(20px*var(--s));color:#9d93aa;margin:0 0 14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.col .g{font-size:calc(27px*var(--s));line-height:1.4;color:#f8efdb}
+.col .tr{font-style:italic;font-size:calc(18px*var(--s));color:var(--bone-dim);margin-top:11px}
+.col .c{font-family:var(--disp);font-size:calc(10px*var(--s));letter-spacing:.19em;color:var(--gold-dim);margin-top:11px}
+.col{border-left:3px solid var(--gold-dim);padding-left:20px}
+.col.b{border-left-color:var(--lapis)}
+.artbox{border:1px solid rgba(217,171,78,.24);background:#0a0810;border-radius:2px;overflow:hidden;max-width:520px}
+.artbox svg{display:block;width:100%;height:auto}
+.side{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:38px;align-items:center}
+table.tb{width:100%;border-collapse:collapse;font-size:calc(18px*var(--s));margin-top:10px}
+table.tb th{font-family:var(--disp);font-size:calc(10.5px*var(--s));letter-spacing:.19em;color:var(--gold-dim);
+ text-align:left;padding:9px 12px;border-bottom:1px solid rgba(217,171,78,.3);font-weight:500}
+table.tb td{padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top;color:var(--bone-dim);line-height:1.45}
+table.tb td:first-child{color:#e9cf94}
+.lexrow{display:grid;grid-template-columns:auto 1fr auto;gap:16px 22px;align-items:baseline;margin-top:6px}
+.lexrow .n{font-family:var(--disp);font-size:calc(15px*var(--s));color:var(--gold);padding-top:8px}
+.lexrow .d{font-size:calc(24px*var(--s));color:#e8ddc7;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.lexrow .s{font-size:calc(15px*var(--s));color:#8a8095;font-style:italic;padding:12px 0 8px;border-bottom:1px solid rgba(255,255,255,.07);text-align:right}
+.foot{font-family:var(--disp);font-size:calc(10.5px*var(--s));letter-spacing:.19em;color:var(--gold-dim);margin-top:20px}
+.notbox{border:1px solid rgba(192,91,109,.45);background:rgba(192,91,109,.09);padding:16px 20px;border-radius:2px;
+ font-size:calc(19px*var(--s));margin-top:26px;line-height:1.5;color:#e5d5d9}
+.thline{font-size:calc(29px*var(--s));line-height:1.35;margin:0 0 18px;color:#f0e6d3;max-width:30em;padding-left:22px;border-left:3px solid var(--vio)}
+.chg{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center;margin-top:22px}
+.chg .cell{border:1px solid rgba(217,171,78,.24);border-radius:3px;padding:18px 20px;background:rgba(255,255,255,.03)}
+.chg .cell.r{border-color:rgba(201,162,232,.45);background:rgba(201,162,232,.07)}
+.chg .gr{font-family:var(--disp);font-size:calc(28px*var(--s));color:var(--gold)}
+.chg .cell.r .gr{color:var(--vio)}
+.chg .en{font-size:calc(17px*var(--s));color:#e4dccb;margin-top:4px}
+.chg .ex{font-size:calc(15px*var(--s));color:#8a8095;font-style:italic;margin-top:8px;line-height:1.45}
+.chg .ar{font-family:var(--disp);font-size:calc(30px*var(--s));color:var(--gold-dim);text-align:center}
+.objgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:14px}
+.objcard{border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:20px 22px;background:rgba(255,255,255,.03)}
+.objcard.they{border-left:3px solid var(--rose)}
+.objcard.you{border-left:3px solid var(--verd);background:rgba(111,168,138,.06)}
+.objcard h4{font-family:var(--disp);font-size:calc(11px*var(--s));letter-spacing:.2em;margin:0 0 10px;font-weight:500}
+.objcard.they h4{color:var(--rose)} .objcard.you h4{color:var(--verd)}
+.objcard .lead2{font-size:calc(22px*var(--s));color:#f0e6d3;margin:0 0 12px;line-height:1.35}
+.objcard .bd{font-size:calc(17px*var(--s));color:var(--bone-dim);line-height:1.55}
+.srcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px;margin-top:10px}
+.srcgrid h5{font-family:var(--disp);font-size:calc(10.5px*var(--s));letter-spacing:.2em;color:var(--gold-dim);margin:0 0 9px;font-weight:500}
+.srcgrid li{font-size:calc(14.5px*var(--s));color:var(--bone-dim);margin-bottom:7px;line-height:1.45;list-style:none}
+.srcgrid ul{padding:0;margin:0}
+.disclaim{font-size:calc(14px*var(--s));font-style:italic;color:#7c7286;margin-top:26px;border-top:1px solid rgba(217,171,78,.18);padding-top:14px}
+.actnum{font-family:var(--disp);font-size:calc(150px*var(--s));color:rgba(217,171,78,.16);line-height:.8;margin-bottom:12px}
+.recipegrid{font-size:calc(17px*var(--s));line-height:1.85;color:var(--bone-dim);margin-top:6px}
+.recipegrid b{color:#e9cf94}
+.recipegrid .w{font-family:var(--disp);color:var(--gold);font-size:calc(16px*var(--s));letter-spacing:.06em}
+
+/* chrome */
+#bar{position:fixed;left:0;right:0;bottom:0;height:46px;z-index:20;display:flex;align-items:center;gap:10px;
+ padding:0 14px;background:rgba(11,9,15,.94);border-top:1px solid rgba(217,171,78,.2)}
+#bar button{font-family:var(--serif);font-size:13px;color:var(--bone);background:rgba(255,255,255,.05);
+ border:1px solid rgba(217,171,78,.26);border-radius:3px;padding:5px 10px;cursor:pointer;transition:.15s;white-space:nowrap}
+#bar button:hover{background:rgba(217,171,78,.18);border-color:var(--gold);color:#fff}
+#bar button.on{background:rgba(217,171,78,.25);border-color:var(--gold);color:#fff}
+#count{font-family:var(--disp);font-size:11px;letter-spacing:.16em;color:var(--gold-dim);min-width:74px}
+#act{font-family:var(--disp);font-size:10.5px;letter-spacing:.2em;color:#6d6479;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#prog{position:fixed;left:0;bottom:46px;height:2px;background:var(--gold);z-index:21;transition:width .3s}
+#drawer{position:fixed;left:0;right:0;bottom:46px;height:0;z-index:19;overflow:hidden;transition:height .25s;
+ background:linear-gradient(180deg,rgba(16,13,22,.99),rgba(11,9,15,.99));border-top:1px solid rgba(217,171,78,.3)}
+#drawer.on{height:36vh}
+#drawer .in{padding:16px clamp(18px,5vw,60px);height:100%;overflow-y:auto;max-width:1180px;margin:0 auto}
+#drawer h6{font-family:var(--disp);font-size:10px;letter-spacing:.22em;color:var(--gold);margin:0 0 10px;font-weight:500}
+#drawer p{font-size:18px;line-height:1.62;margin:0 0 13px;color:#e8e0d0}
+#drawer .nx{font-size:13px;font-style:italic;color:#7c7286;border-top:1px solid rgba(217,171,78,.18);padding-top:10px;margin-top:6px}
+#handout{position:fixed;inset:0;z-index:40;background:#0b090f;overflow-y:auto;display:none;padding:40px clamp(20px,6vw,90px) 90px}
+#handout.on{display:block}
+#handout .ho{max-width:900px;margin:0 auto}
+#handout h1{font-family:var(--disp);color:var(--gold);font-size:34px;letter-spacing:.08em}
+#handout section{border-top:1px solid rgba(217,171,78,.2);padding:22px 0;page-break-inside:avoid}
+#handout .num{font-family:var(--disp);font-size:10px;letter-spacing:.2em;color:var(--gold-dim)}
+#handout h3{font-family:var(--disp);color:var(--gold);font-size:23px;margin:6px 0 4px}
+#handout .sl{font-size:15px;color:#9d93aa;font-style:italic;margin-bottom:12px;line-height:1.5}
+#handout p.sc{font-size:16.5px;line-height:1.65;margin:0 0 12px;color:#e8e0d0}
+#hoClose{position:fixed;top:14px;right:16px;z-index:41}
+#help{position:fixed;inset:0;z-index:45;background:rgba(8,6,12,.93);display:none;align-items:center;justify-content:center}
+#help.on{display:flex}
+#help .card{max-width:560px;border:1px solid rgba(217,171,78,.35);background:#13101b;border-radius:4px;padding:26px 30px}
+#help h3{font-family:var(--disp);color:var(--gold);letter-spacing:.14em;font-size:16px;margin:0 0 16px}
+#help dl{display:grid;grid-template-columns:auto 1fr;gap:9px 18px;margin:0;font-size:15px}
+#help dt{font-family:var(--disp);font-size:12px;letter-spacing:.1em;color:var(--gold);padding-top:2px}
+#help dd{margin:0;color:var(--bone-dim)}
+@media print{
+  body{background:#fff;color:#000;overflow:visible}
+  body::after,#bar,#prog,#drawer,#stage,#hoClose{display:none!important}
+  #handout{position:static;display:block;background:#fff;padding:0}
+  #handout h1,#handout h3{color:#000} #handout p.sc,#handout .sl{color:#222}
+  #handout section{border-top:1px solid #ccc}
+}
+@media(max-width:820px){
+  :root{--s:.62}
+  .row2,.objgrid,.side{grid-template-columns:1fr}
+  .chg{grid-template-columns:1fr;gap:10px}.chg .ar{transform:rotate(90deg)}
+  #drawer.on{height:44vh}
+}
+.gw{cursor:help;border-bottom:1px dotted rgba(242,223,174,.5)}
+.grk{cursor:help;border-radius:2px;transition:background .12s;border-bottom:1px dotted rgba(217,171,78,.3)}
+blockquote.gk .g .grk{border-bottom-color:rgba(217,171,78,.17)}
+.grk:hover{background:rgba(217,171,78,.22)}
+#pop{
+  position:fixed;z-index:80;max-width:340px;
+  background:linear-gradient(180deg,#1b1626,#120e19);
+  border:1px solid rgba(217,171,78,.5);border-radius:3px;
+  box-shadow:0 18px 50px rgba(0,0,0,.7);padding:13px 15px 12px;
+  opacity:0;pointer-events:none;transform:translateY(6px);transition:.15s;
+}
+#pop.on{opacity:1;pointer-events:auto;transform:none}
+#pop .w{font-family:var(--disp);font-size:22px;color:var(--gold);letter-spacing:.02em;line-height:1.2}
+#pop .tr{font-style:italic;color:#9d93aa;font-size:13.5px;margin:2px 0 8px}
+#pop .gl{font-size:15px;color:var(--bone);line-height:1.5}
+#pop .none{font-size:13.5px;color:#8d8398;font-style:italic;line-height:1.5}
+#pop .lk{margin-top:11px;border-top:1px solid rgba(217,171,78,.2);padding-top:9px}
+#pop .lkrow{display:flex;align-items:center;gap:6px;margin:5px 0}
+#pop .lkrow span{font-family:var(--disp);font-size:9.5px;letter-spacing:.16em;color:var(--gold-dim);min-width:64px}
+#pop .lkrow code{flex:1;font-size:10.5px;color:#7f92a8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all}
+#pop .x{position:absolute;top:6px;right:8px;font-size:13px;color:#6d6479;cursor:pointer}
+button.cp{padding:2px 7px;font-size:11px;letter-spacing:.06em;border-color:rgba(217,171,78,.3)}
+ul.srcs li{padding:8px 0 9px 16px}
+ul.srcs .u{display:block;font-size:10.5px;color:#6f7d90;margin-top:4px;word-break:break-all;user-select:all;line-height:1.4}
+.srchd{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:26px 0 8px}
+.srchd h4{margin:0}
+.hint{font-size:11.5px;line-height:1.55;color:#8a8095;font-style:italic;
+  border-left:2px solid rgba(217,171,78,.3);padding:6px 0 6px 11px;margin:12px 0 2px}
+.hint b{color:#bda874;font-style:normal}
+/* ── built-in reader ─────────────────────────────────────────── */
+#reader{position:fixed;inset:0;z-index:55;background:#0a0810;display:none;flex-direction:column}
+#reader.open{display:flex}
+#rbar{flex-shrink:0;background:#0d0b10;border-bottom:1px solid rgba(217,171,78,.24);padding:10px 16px;
+  box-shadow:0 10px 30px rgba(10,8,16,.9)}
+#rbar .row{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
+#rbar .row:last-child{margin-bottom:0}
+#rbar input{font-family:var(--serif);font-size:12.5px;color:#a9b7c6;background:rgba(255,255,255,.05);
+  border:1px solid rgba(217,171,78,.26);border-radius:3px;padding:6px 9px;outline:none}
+#rbar input:focus{border-color:var(--gold)}
+#rurl{flex:1;min-width:210px}
+#rjump,#rfind{flex:0 0 130px;color:var(--bone);font-size:13.5px}
+#rbar select{font-family:var(--serif);font-size:12px;color:var(--bone);background:rgba(255,255,255,.05);
+  border:1px solid rgba(217,171,78,.26);border-radius:3px;padding:5px 7px;outline:none}
+.shelf{display:flex;gap:6px;flex-wrap:wrap}
+.shelf button{font-size:12px;padding:4px 9px}
+.shelf .lbl{font-family:var(--disp);font-size:9.5px;letter-spacing:.18em;color:var(--gold-dim);align-self:center;margin-right:2px}
+#rmain{flex:1;overflow-y:auto;padding:24px clamp(16px,5vw,60px) 90px}
+#rinner{max-width:880px;margin:0 auto}
+#rstat{font-size:13.5px;color:#8d8398;font-style:italic;padding:6px 0 14px}
+#rstat.err{color:#d98a9c;font-style:normal}
+#rstat b{color:#cbb37a;font-style:normal}
+#rmeta{border:1px solid rgba(217,171,78,.24);border-radius:3px;padding:15px 19px;margin-bottom:24px;background:rgba(255,255,255,.028)}
+#rmeta h2{font-family:var(--disp);font-size:25px;color:var(--gold);margin:0 0 3px;line-height:1.2;letter-spacing:.02em}
+#rmeta .by{font-style:italic;color:var(--bone-dim);font-size:15px}
+#rmeta dl{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;margin:11px 0 0;font-size:13px}
+#rmeta dt{font-family:var(--disp);font-size:9.5px;letter-spacing:.18em;color:var(--gold-dim);padding-top:4px}
+#rmeta dd{margin:0;color:var(--bone-dim)}
+#rtext{font-size:var(--rfs,20px);line-height:1.85}
+.vs{display:flex;gap:14px;align-items:baseline;scroll-margin-top:130px}
+.vs .n{flex:0 0 54px;text-align:right;font-family:var(--disp);font-size:11px;color:var(--gold-dim);
+  letter-spacing:.05em;user-select:none;padding-top:5px}
+.vs .t{flex:1}
+.vs.hi{background:rgba(217,171,78,.15);border-radius:3px;outline:1px solid rgba(217,171,78,.35)}
+.pr{margin:0 0 15px;text-indent:1.3em}
+.brk{height:15px}
+h3.rsec{font-family:var(--disp);font-size:11.5px;letter-spacing:.24em;color:var(--gold-dim);margin:32px 0 12px;
+  font-weight:500;border-bottom:1px solid rgba(217,171,78,.18);padding-bottom:6px}
+.rnote{font-size:13px;color:#8d8398;font-style:italic;border-left:2px solid rgba(154,124,196,.4);
+  padding-left:9px;margin:5px 0 5px 68px}
+.grk.hit{background:rgba(217,171,78,.32);outline:1px solid rgba(217,171,78,.5)}
+#rtext .grk{border-bottom:none}
+#rpaste{display:none;width:100%;min-height:150px;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  color:#a9b7c6;background:rgba(255,255,255,.04);border:1px solid rgba(217,171,78,.25);border-radius:3px;
+  padding:10px;margin-top:8px;line-height:1.5}
+#rlib{display:none;margin-top:8px;border-top:1px solid rgba(217,171,78,.18);padding-top:8px;max-height:32vh;overflow-y:auto}
+#rlib .crumb{font-size:12px;color:#8d8398;font-style:italic;margin-bottom:6px}
+#rlib .it{display:block;width:100%;text-align:left;font-size:13.5px;padding:5px 9px;margin-bottom:2px;
+  border:none;border-left:2px solid transparent;background:none;color:var(--bone-dim);border-radius:0}
+#rlib .it:hover{background:rgba(217,171,78,.1);border-left-color:var(--gold);color:#fff}
+#rlib .it small{color:#6f7d90;font-size:11px}
+button.tei{margin-left:6px;font-size:11.5px;padding:2px 8px;border-color:rgba(92,143,201,.45);color:#a8c4e0}
+button.tei:hover{background:rgba(92,143,201,.2);border-color:#5c8fc9;color:#fff}
+.teirow{margin:14px 0 2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  border-left:2px solid rgba(92,143,201,.4);padding:7px 0 7px 11px}
+.teirow span{font-size:12.5px;color:#8d93a8;font-style:italic}
+
+
+#toast{position:fixed;left:50%;bottom:60px;transform:translate(-50%,20px);z-index:70;opacity:0;transition:.25s;
+ background:rgba(217,171,78,.94);color:#1a1410;font-size:13.5px;padding:8px 16px;border-radius:2px;font-weight:600;pointer-events:none}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div id="stage"></div>
+<div id="prog" style="width:0"></div>
+
+<div id="drawer"><div class="in">
+  <h6>WHAT TO SAY</h6>
+  <div id="scriptBody"></div>
+  <div class="nx" id="nextUp"></div>
+</div></div>
+
+<div id="bar">
+  <button id="prev">◀</button>
+  <button id="next">▶</button>
+  <span id="count"></span>
+  <span id="act"></span>
+  <div style="flex:1"></div>
+  <button id="bScript">Script <span style="opacity:.6;font-size:11px">S</span></button>
+  <button id="bRead">📖 Texts</button>
+  <button id="bHand">Handout <span style="opacity:.6;font-size:11px">H</span></button>
+  <button id="bFull">⤢</button>
+  <button id="bSmall">A−</button><button id="bBig">A+</button>
+  <button id="bHelp">?</button>
+</div>
+
+<div id="handout"><button id="hoClose">Close ✕</button><div class="ho" id="hoBody"></div></div>
+
+<div id="help"><div class="card">
+  <h3>HOW TO DRIVE THIS</h3>
+  <dl>
+    <dt>→ · space</dt><dd>next slide</dd>
+    <dt>←</dt><dd>previous slide</dd>
+    <dt>S</dt><dd>show or hide the script for the slide you are on</dd>
+    <dt>H</dt><dd>handout — every slide with its script, in one scrolling document. Print it, or print to PDF, for paper notes.</dd>
+    <dt>F</dt><dd>fullscreen</dd>
+    <dt>A− / A+</dt><dd>make everything smaller or larger — useful on an unfamiliar projector</dd>
+    <dt>📖</dt><dd>open the canonical Greek. On a quote slide it lands on that exact verse.</dd>
+    <dt>click a Greek word</dt><dd>transliteration, gloss and a lookup address</dd>
+    <dt>Esc</dt><dd>close whatever is open</dd>
+  </dl>
+  <p style="font-size:14px;color:#7c7286;font-style:italic;margin:18px 0 0">
+    Rehearsing on one screen? Leave the script drawer open — the slide shifts up and stays readable.</p>
+  <button id="helpClose" style="margin-top:18px;font-family:var(--serif);font-size:14px;color:var(--bone);
+    background:rgba(255,255,255,.05);border:1px solid rgba(217,171,78,.3);border-radius:3px;padding:7px 14px;cursor:pointer">Got it</button>
+</div></div>
+<div id="reader">
+  <div id="rbar">
+    <div class="row">
+      <b style="font-family:var(--disp);font-size:12px;letter-spacing:.2em;color:var(--gold)">ΑΝΑΓΝΩΣΤΗΣ</b>
+      <span style="font-size:12.5px;color:#7c7286;font-style:italic">read the Greek, in here</span>
+      <div style="flex:1"></div>
+      <button id="rClose">Close ✕</button>
+    </div>
+    <div class="row">
+      <input id="rurl" spellcheck="false" placeholder="raw Perseus / First1KGreek XML address…">
+      <button class="pri" id="rLoad" style="background:rgba(217,171,78,.2);border-color:var(--gold);color:#fff">Read it</button>
+      <button id="rPasteBtn">paste XML</button>
+    </div>
+    <div class="row shelf" id="rShelf"></div>
+    <div class="row">
+      <input id="rjump" placeholder="go to 13.3 / 267">
+      <button id="rJumpBtn">Go</button>
+      <input id="rfind" placeholder="find Greek…">
+      <button id="rFindBtn">Find</button>
+      <select id="rEvery"><option value="1">every line</option><option value="5" selected>every 5</option><option value="10">every 10</option><option value="0">no numbers</option></select>
+      <select id="rFs"><option value="18">small</option><option value="20" selected>medium</option><option value="24">large</option><option value="28">larger</option></select>
+      <button id="rNotes">notes: hidden</button>
+      <button id="rCopy">⧉ copy</button>
+      <button id="rDl">⤓ .txt</button>
+    </div>
+    <div id="rlib"></div>
+    <textarea id="rpaste" spellcheck="false" placeholder="Paste the whole raw XML here, then press Read it."></textarea>
+  </div>
+  <div id="rmain"><div id="rinner">
+    <div id="rstat"></div>
+    <div id="rmeta" style="display:none"></div>
+    <div id="rtext"></div>
+  </div></div>
+</div>
+
+<div id="pop"></div>
+<div id="toast"></div>
+<script>
+/*    HAND-DRAWN PLATES — original SVG, black-figure palette.
+   These always render. A real museum photograph is fetched over the top
+   where one can be found; if it cannot, you still get a picture.
+   ══════════════════════════════════════════════════════════════════════ */
+const T='#c8643c', G='#d9ab4e', B='#0f0b14', I='#eadfc6';
+function frame(inner,h){h=h||340;return `<svg class="art" viewBox="0 0 600 ${h}" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="mea" width="24" height="12" patternUnits="userSpaceOnUse">
+<path d="M0 10h6V4h12v6h6" fill="none" stroke="${G}" stroke-width="1.4" opacity=".55"/></pattern></defs>
+<rect width="600" height="${h}" fill="#140f1b"/>
+<rect x="14" y="14" width="572" height="${h-28}" fill="none" stroke="${G}" stroke-width="1" opacity=".35"/>
+<rect x="20" y="20" width="560" height="12" fill="url(#mea)"/>
+<rect x="20" y="${h-32}" width="560" height="12" fill="url(#mea)"/>
+${inner}</svg>`}
+
+const PL = {
+serpent: frame(`<g transform="translate(300,180)">
+<path d="M-190 60 C-150 -30 -60 -70 0 -30 C60 10 120 -20 150 -70 C175 -110 140 -150 100 -132 C62 -115 78 -70 112 -74"
+ fill="none" stroke="${T}" stroke-width="19" stroke-linecap="round"/>
+<path d="M-190 60 C-150 -30 -60 -70 0 -30 C60 10 120 -20 150 -70 C175 -110 140 -150 100 -132 C62 -115 78 -70 112 -74"
+ fill="none" stroke="${G}" stroke-width="2" stroke-dasharray="3 12" opacity=".8"/>
+<path d="M112 -74 l26 -6 l-4 -13 l24 12 l-24 12 l4 -13z" fill="${T}"/>
+<circle cx="132" cy="-79" r="2.6" fill="${I}"/>
+<path d="M158 -71 l16 4 M158 -68 l15 8" stroke="${T}" stroke-width="2"/>
+<g opacity=".85" fill="${G}">
+<circle cx="-140" cy="26" r="3"/><circle cx="-90" cy="-8" r="3"/><circle cx="-30" cy="-30" r="3"/>
+<circle cx="30" cy="-16" r="3"/><circle cx="90" cy="-34" r="3"/></g>
+<path d="M-215 78 h430" stroke="${G}" stroke-width="1.2" opacity=".4"/></g>`),
+
+cup: frame(`<g transform="translate(300,190)">
+<path d="M-120 -40 C-120 40 -70 76 0 76 C70 76 120 40 120 -40 Z" fill="${T}"/>
+<path d="M-120 -40 h240" stroke="${G}" stroke-width="3"/>
+<ellipse cx="0" cy="-40" rx="120" ry="22" fill="#140f1b" stroke="${G}" stroke-width="2.5"/>
+<ellipse cx="0" cy="-40" rx="96" ry="15" fill="#2a1a1c" opacity=".9"/>
+<path d="M-120 -30 C-165 -30 -168 22 -128 30" fill="none" stroke="${T}" stroke-width="11" stroke-linecap="round"/>
+<path d="M120 -30 C165 -30 168 22 128 30" fill="none" stroke="${T}" stroke-width="11" stroke-linecap="round"/>
+<path d="M-16 76 h32 l14 34 h-60z" fill="${T}"/>
+<ellipse cx="0" cy="112" rx="52" ry="10" fill="${T}"/>
+<g stroke="${B}" stroke-width="2.4" fill="none" opacity=".85">
+<path d="M-70 6 q20 -22 40 0 q20 22 40 0 q20 -22 40 0"/></g>
+<path d="M0 -40 m-40 0 a40 14 0 1 0 80 0 a40 14 0 1 0 -80 0" fill="none" stroke="${G}" stroke-width="1" opacity=".5"/></g>`),
+
+poppy: frame(`<g transform="translate(300,180)">
+<path d="M0 130 V-10" stroke="${T}" stroke-width="7"/>
+<ellipse cx="0" cy="-52" rx="52" ry="60" fill="${T}"/>
+<path d="M0 -112 l-9 -22 l9 6 l9 -6z" fill="${G}"/>
+<g stroke="${G}" stroke-width="2" opacity=".9">
+<path d="M-34 -104 q34 -16 68 0"/><path d="M-42 -96 q42 -18 84 0"/></g>
+<g stroke="${B}" stroke-width="3" opacity=".7">
+<path d="M-30 -70 q10 40 4 62"/><path d="M-8 -78 q8 46 2 68"/><path d="M16 -74 q6 44 0 64"/></g>
+<path d="M-30 -14 q-40 -6 -54 -40 q40 0 54 40z" fill="${T}" opacity=".9"/>
+<path d="M30 26 q44 -6 58 -44 q-44 2 -58 44z" fill="${T}" opacity=".9"/>
+<g fill="${G}"><circle cx="-52" cy="6" r="3.4"/><circle cx="-46" cy="22" r="2.6"/><circle cx="-58" cy="24" r="2.2"/></g>
+<path d="M-140 130 h280" stroke="${G}" stroke-width="1.2" opacity=".4"/></g>`),
+
+squill: frame(`<g transform="translate(300,190)">
+<path d="M0 -20 C-60 -20 -76 40 -50 80 C-30 112 30 112 50 80 C76 40 60 -20 0 -20z" fill="${T}"/>
+<g stroke="${B}" stroke-width="2" opacity=".55" fill="none">
+<path d="M-34 -6 C-52 34 -40 76 -18 96"/><path d="M0 -18 V104"/><path d="M34 -6 C52 34 40 76 18 96"/></g>
+<g stroke="${T}" stroke-width="6" stroke-linecap="round">
+<path d="M-8 -22 C-52 -70 -84 -84 -110 -86"/><path d="M8 -22 C52 -70 84 -84 110 -86"/>
+<path d="M0 -24 V-120"/></g>
+<g fill="${G}"><circle cx="0" cy="-128" r="5"/><circle cx="-14" cy="-112" r="4"/><circle cx="14" cy="-112" r="4"/>
+<circle cx="-24" cy="-96" r="3.4"/><circle cx="24" cy="-96" r="3.4"/><circle cx="0" cy="-104" r="3.4"/></g>
+<g stroke="${G}" stroke-width="1.6" opacity=".7"><path d="M-110 -86 l-10 -8"/><path d="M110 -86 l10 -8"/></g>
+<path d="M-150 118 h300" stroke="${G}" stroke-width="1.2" opacity=".4"/></g>`),
+
+wormwood: frame(`<g transform="translate(300,180)" stroke-linecap="round">
+<path d="M0 140 V-110" stroke="${T}" stroke-width="6"/>
+<g stroke="${T}" stroke-width="3.4" fill="none">
+<path d="M0 100 q-46 -10 -70 -46"/><path d="M0 100 q46 -10 70 -46"/>
+<path d="M0 50 q-52 -12 -78 -52"/><path d="M0 50 q52 -12 78 -52"/>
+<path d="M0 4 q-44 -12 -66 -48"/><path d="M0 4 q44 -12 66 -48"/>
+<path d="M0 -42 q-34 -12 -52 -42"/><path d="M0 -42 q34 -12 52 -42"/></g>
+<g fill="${G}" opacity=".85">
+<circle cx="-70" cy="54" r="4"/><circle cx="70" cy="54" r="4"/><circle cx="-78" cy="-2" r="4"/>
+<circle cx="78" cy="-2" r="4"/><circle cx="-66" cy="-44" r="3.4"/><circle cx="66" cy="-44" r="3.4"/>
+<circle cx="-52" cy="-84" r="3"/><circle cx="52" cy="-84" r="3"/><circle cx="0" cy="-116" r="4.4"/></g>
+<path d="M-150 140 h300" stroke="${G}" stroke-width="1.2" opacity=".4"/></g>`),
+
+star: frame(`<g transform="translate(300,170)">
+<g opacity=".5" stroke="${G}" stroke-width="1"><path d="M-260 -140 L-60 120"/><path d="M-230 -150 L-20 110"/></g>
+<path d="M-40 -20 l14 -48 l14 48 l48 14 l-48 14 l-14 48 l-14 -48 l-48 -14z" transform="translate(30,0) scale(1.5)" fill="${G}"/>
+<circle cx="30" cy="0" r="16" fill="#fff" opacity=".9"/>
+<g stroke="${T}" stroke-width="3.2" opacity=".85" fill="none">
+<path d="M-250 -160 q60 40 120 100"/><path d="M-282 -134 q66 44 128 104"/></g>
+<g stroke="${T}" stroke-width="5" fill="none" opacity=".95">
+<path d="M-220 116 q40 -22 80 0 q40 22 80 0 q40 -22 80 0 q40 22 80 0"/>
+<path d="M-220 142 q40 -22 80 0 q40 22 80 0 q40 -22 80 0 q40 22 80 0"/></g>
+<text x="30" y="-96" text-anchor="middle" font-family="Cinzel,serif" font-size="21" fill="${G}" letter-spacing="5">ΑΨΙΝΘΟΣ</text></g>`),
+
+tree: frame(`<g transform="translate(300,180)">
+<path d="M0 140 V-10" stroke="${T}" stroke-width="16"/>
+<path d="M0 40 q-46 -22 -60 -58 M0 20 q46 -22 62 -58" stroke="${T}" stroke-width="9" fill="none"/>
+<circle cx="0" cy="-58" r="96" fill="none" stroke="${T}" stroke-width="7"/>
+<circle cx="0" cy="-58" r="72" fill="none" stroke="${G}" stroke-width="1.6" opacity=".55"/>
+<g fill="${G}">
+<circle cx="0" cy="-152" r="7"/><circle cx="48" cy="-140" r="7"/><circle cx="82" cy="-106" r="7"/>
+<circle cx="94" cy="-58" r="7"/><circle cx="82" cy="-10" r="7"/><circle cx="48" cy="24" r="7"/>
+<circle cx="0" cy="36" r="7"/><circle cx="-48" cy="24" r="7"/><circle cx="-82" cy="-10" r="7"/>
+<circle cx="-94" cy="-58" r="7"/><circle cx="-82" cy="-106" r="7"/><circle cx="-48" cy="-140" r="7"/></g>
+<g stroke="${T}" stroke-width="4.6" fill="none" opacity=".95">
+<path d="M-250 118 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0"/>
+<path d="M-250 142 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0"/></g></g>`),
+
+river: frame(`<g transform="translate(300,180)">
+<path d="M-260 -120 h520" stroke="${G}" stroke-width="2" opacity=".4"/>
+<g stroke="${T}" stroke-width="5" fill="none">
+<path d="M-260 -60 q52 -24 104 0 q52 24 104 0 q52 -24 104 0 q52 24 104 0"/>
+<path d="M-260 -20 q52 -24 104 0 q52 24 104 0 q52 -24 104 0 q52 24 104 0"/>
+<path d="M-260 20 q52 -24 104 0 q52 24 104 0 q52 -24 104 0 q52 24 104 0"/>
+<path d="M-260 60 q52 -24 104 0 q52 24 104 0 q52 -24 104 0 q52 24 104 0"/></g>
+<g stroke="${G}" stroke-width="4" opacity=".9">
+<path d="M-210 -70 V-130"/><path d="M-150 -70 V-140"/><path d="M150 -70 V-140"/><path d="M210 -70 V-130"/></g>
+<g fill="${G}"><circle cx="-210" cy="-138" r="12"/><circle cx="-150" cy="-150" r="14"/>
+<circle cx="150" cy="-150" r="14"/><circle cx="210" cy="-138" r="12"/></g>
+<path d="M-40 96 h80 l-40 34z" fill="${G}" opacity=".8"/></g>`),
+
+hand: frame(`<g transform="translate(300,180)">
+<path d="M-58 120 V20 q0 -30 26 -30 q26 0 26 30 V-8 q0 -34 26 -34 q26 0 26 34 V6 q0 -30 24 -30 q24 0 24 30 V70 q0 60 -50 60z"
+ fill="${T}" transform="translate(-40,-30)"/>
+<path d="M-98 -22 q-40 -34 -58 -12 q-16 20 22 44 l34 22z" fill="${T}"/>
+<circle cx="-20" cy="10" r="30" fill="none" stroke="${B}" stroke-width="6"/>
+<path d="M-38 -8 l36 36 M-2 -8 l-36 36" stroke="${B}" stroke-width="6"/>
+<circle cx="-20" cy="10" r="42" fill="none" stroke="${G}" stroke-width="1.6" stroke-dasharray="4 6" opacity=".8"/>
+<text x="120" y="-56" text-anchor="middle" font-family="Cinzel,serif" font-size="19" fill="${G}" letter-spacing="4">ΧΑΡΑΓΜΑ</text>
+<text x="120" y="-28" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="14" fill="${I}" opacity=".7">bite · brand · coin-stamp</text></g>`),
+
+coin: frame(`<g transform="translate(300,180)">
+<circle cx="0" cy="0" r="128" fill="${T}"/>
+<circle cx="0" cy="0" r="118" fill="none" stroke="${B}" stroke-width="3"/>
+<circle cx="0" cy="0" r="128" fill="none" stroke="${G}" stroke-width="2.4"/>
+<path d="M-6 -78 q46 -4 62 34 q10 22 2 44 q-4 12 6 18 q10 6 -2 12 q-14 6 -12 20 q2 16 -16 20 q-24 5 -46 -6
+ q-30 -14 -36 -50 q-8 -48 20 -76 q10 -12 22 -16z" fill="${B}" opacity=".92"/>
+<path d="M-6 -78 q-34 6 -50 40 q-14 30 -4 62" fill="none" stroke="${G}" stroke-width="2" opacity=".6"/>
+<circle cx="6" cy="-14" r="5" fill="${T}"/>
+<path d="M-30 34 q22 10 44 2" stroke="${T}" stroke-width="4" fill="none"/>
+<g fill="${G}" opacity=".9" font-family="Cinzel,serif" font-size="15" letter-spacing="4">
+<text x="0" y="-96" text-anchor="middle">ΝΕΡΩΝ</text></g>
+<g stroke="${G}" stroke-width="1.2" opacity=".45">
+<circle cx="0" cy="0" r="140" fill="none"/></g></g>`),
+
+jar: frame(`<g transform="translate(300,180)">
+<path d="M-70 -92 h140 l-10 24 q26 26 26 70 q0 76 -86 76 q-86 0 -86 -76 q0 -44 26 -70z" fill="${T}"/>
+<rect x="-84" y="-104" width="168" height="16" rx="3" fill="${G}"/>
+<path d="M-70 -50 h140" stroke="${B}" stroke-width="3" opacity=".55"/>
+<rect x="-64" y="-34" width="128" height="46" rx="2" fill="#140f1b" opacity=".9" stroke="${G}" stroke-width="1.4"/>
+<text x="0" y="-2" text-anchor="middle" font-family="Cinzel,serif" font-size="19" fill="${G}" letter-spacing="3">ΘΗΡΙΑΚΗ</text>
+<g stroke="${B}" stroke-width="3" opacity=".5" fill="none">
+<path d="M-62 30 q62 22 124 0"/><path d="M-56 48 q56 20 112 0"/></g>
+<ellipse cx="0" cy="80" rx="60" ry="10" fill="${B}" opacity=".35"/>
+<path d="M-150 108 h300" stroke="${G}" stroke-width="1.2" opacity=".4"/></g>`),
+
+scroll: frame(`<g transform="translate(300,180)">
+<rect x="-190" y="-104" width="380" height="208" fill="${I}" opacity=".92" rx="3"/>
+<path d="M-190 -104 q-26 104 0 208" fill="${T}"/>
+<path d="M190 -104 q26 104 0 208" fill="${T}"/>
+<g stroke="#3a3040" stroke-width="2.4" opacity=".55">
+<path d="M-150 -66 h300"/><path d="M-150 -38 h276"/><path d="M-150 -10 h300"/><path d="M-150 18 h250"/>
+<path d="M-150 46 h292"/><path d="M-150 74 h180"/></g>
+<text x="0" y="-84" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="#5b3a2a" letter-spacing="4">ΓΑΛΗΝΗ</text></g>`),
+
+scales: frame(`<g transform="translate(300,176)">
+<path d="M0 -120 V96" stroke="${T}" stroke-width="7"/>
+<path d="M-150 -100 h300" stroke="${T}" stroke-width="7" stroke-linecap="round"/>
+<circle cx="0" cy="-120" r="10" fill="${G}"/>
+<g stroke="${G}" stroke-width="2"><path d="M-150 -100 V-50"/><path d="M150 -100 V-30"/></g>
+<path d="M-208 -50 q58 44 116 0z" fill="${T}"/>
+<path d="M92 -30 q58 44 116 0z" fill="${T}"/>
+<path d="M-60 96 h120 l16 24 h-152z" fill="${T}"/>
+<text x="-150" y="-118" text-anchor="middle" font-family="Cinzel,serif" font-size="14" fill="${G}" letter-spacing="3">ΙΟΣ</text>
+<text x="150" y="-118" text-anchor="middle" font-family="Cinzel,serif" font-size="14" fill="${G}" letter-spacing="3">ΑΚΟΣ</text></g>`),
+
+staff: frame(`<g transform="translate(300,180)">
+<path d="M0 -130 V132" stroke="${T}" stroke-width="12" stroke-linecap="round"/>
+<path d="M0 108 C46 88 46 48 0 28 C-46 8 -46 -32 0 -52 C46 -72 46 -104 6 -118"
+ fill="none" stroke="${G}" stroke-width="12" stroke-linecap="round"/>
+<path d="M6 -118 l-24 -10 l6 -12 l-26 12 l24 16z" fill="${G}"/>
+<circle cx="-8" cy="-124" r="2.4" fill="${B}"/>
+<g stroke="${T}" stroke-width="1.6" opacity=".5" fill="none">
+<circle cx="0" cy="0" r="152"/></g>
+<text x="0" y="-158" text-anchor="middle" font-family="Cinzel,serif" font-size="16" fill="${G}" letter-spacing="5">ΣΩΤΗΡ</text></g>`),
+
+bee: frame(`<g transform="translate(300,180)">
+<ellipse cx="0" cy="20" rx="52" ry="72" fill="${G}"/>
+<g fill="${B}" opacity=".85"><rect x="-52" y="-6" width="104" height="14"/><rect x="-48" y="24" width="96" height="14"/>
+<rect x="-38" y="54" width="76" height="14"/></g>
+<circle cx="0" cy="-70" r="30" fill="${B}"/>
+<path d="M-14 -96 q-10 -26 -26 -34 M14 -96 q10 -26 26 -34" stroke="${B}" stroke-width="4" fill="none"/>
+<path d="M-20 -34 q-96 -56 -120 6 q60 34 118 6z" fill="${I}" opacity=".55"/>
+<path d="M20 -34 q96 -56 120 6 q-60 34 -118 6z" fill="${I}" opacity=".55"/>
+<path d="M0 92 l0 24" stroke="${B}" stroke-width="5"/>
+<text x="0" y="-124" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="${G}" letter-spacing="4">ΜΕΛΙ ΑΤΤΙΚΟΝ</text></g>`),
+
+throne: frame(`<g transform="translate(300,180)">
+<path d="M-210 120 h420 l-26 -34 h-368z" fill="${T}"/>
+<path d="M-178 86 h356 v-26 h-356z" fill="${G}" opacity=".85"/>
+<path d="M-150 60 h300 v-24 h-300z" fill="${T}"/>
+<path d="M-124 36 h248 v-22 h-248z" fill="${G}" opacity=".7"/>
+<path d="M-96 14 h192 v-20 h-192z" fill="${T}"/>
+<path d="M-150 -6 h60 v-124 h-60z" fill="${T}"/>
+<path d="M90 -6 h60 v-124 h-60z" fill="${T}"/>
+<path d="M-90 -6 h180 v-52 h-180z" fill="#140f1b" stroke="${G}" stroke-width="1.6"/>
+<g stroke="${G}" stroke-width="2" opacity=".7" fill="none">
+<path d="M-140 -120 v104"/><path d="M-120 -120 v104"/><path d="M-100 -120 v104"/>
+<path d="M100 -120 v104"/><path d="M120 -120 v104"/><path d="M140 -120 v104"/></g>
+<g fill="${G}"><circle cx="-120" cy="-134" r="9"/><circle cx="120" cy="-134" r="9"/></g>
+<text x="0" y="-30" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="${G}" letter-spacing="4">Ο ΘΡΟΝΟΣ</text></g>`),
+
+lamb: frame(`<g transform="translate(300,186)">
+<ellipse cx="-10" cy="20" rx="104" ry="70" fill="${I}" opacity=".92"/>
+<g fill="${T}" opacity=".35">
+<circle cx="-70" cy="0" r="17"/><circle cx="-36" cy="-22" r="19"/><circle cx="4" cy="-26" r="19"/>
+<circle cx="44" cy="-14" r="18"/><circle cx="66" cy="16" r="16"/><circle cx="-64" cy="40" r="16"/>
+<circle cx="-22" cy="52" r="17"/><circle cx="24" cy="50" r="16"/></g>
+<g stroke="${T}" stroke-width="9" stroke-linecap="round">
+<path d="M-64 84 v34"/><path d="M-24 88 v30"/><path d="M28 88 v30"/><path d="M66 82 v36"/></g>
+<circle cx="-104" cy="-16" r="34" fill="${I}"/>
+<circle cx="-118" cy="-20" r="3.6" fill="#2a2130"/>
+<path d="M-136 -6 q-16 6 -14 18 q14 2 20 -10z" fill="${I}"/>
+<g stroke="${G}" stroke-width="4.6" fill="none" stroke-linecap="round">
+<path d="M-124 -48 q-8 -22 4 -34"/><path d="M-108 -50 q-2 -24 10 -34"/><path d="M-92 -50 q6 -24 20 -30"/>
+<path d="M-78 -44 q14 -20 28 -22"/><path d="M-136 -42 q-16 -18 -12 -34"/>
+<path d="M-64 -36 q18 -16 32 -14"/><path d="M-150 -32 q-22 -12 -24 -28"/></g>
+<path d="M92 -76 v150" stroke="${G}" stroke-width="5"/>
+<path d="M92 -76 h72 l-16 24 l16 24 h-72z" fill="${T}"/>
+<text x="0" y="-108" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="${G}" letter-spacing="4">ΤΟ ΑΡΝΙΟΝ</text></g>`),
+
+coin2: frame(`<g transform="translate(300,180)">
+<circle cx="0" cy="0" r="130" fill="${I}" opacity=".9"/>
+<circle cx="0" cy="0" r="130" fill="none" stroke="${G}" stroke-width="2.6"/>
+<circle cx="0" cy="0" r="112" fill="none" stroke="${T}" stroke-width="2" opacity=".5"/>
+<g transform="translate(0,26)">
+<path d="M-54 0 h108 v54 q0 12 -12 12 h-84 q-12 0 -12 -12z" fill="${T}"/>
+<g stroke="#140f1b" stroke-width="2" opacity=".45">
+<path d="M-54 14 h108"/><path d="M-54 30 h108"/><path d="M-54 46 h108"/>
+<path d="M-26 0 v66"/><path d="M2 0 v66"/><path d="M30 0 v66"/></g>
+<path d="M-58 0 q58 -20 116 0 q-58 14 -116 0z" fill="${G}"/>
+<path d="M28 -6 C64 -30 44 -70 6 -66 C-26 -62 -22 -30 4 -28" fill="none" stroke="${T}" stroke-width="11" stroke-linecap="round"/>
+<path d="M4 -28 l-24 -6 l4 -12 l-26 12 l24 14z" fill="${T}"/>
+<circle cx="-14" cy="-32" r="2.4" fill="#140f1b"/></g>
+<g fill="none" stroke="${T}" stroke-width="3" opacity=".65">
+<path d="M-112 -32 q22 -18 44 -4 q22 14 44 -4"/><path d="M112 -32 q-22 -18 -44 -4"/></g>
+<text x="0" y="-84" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="#5b3a2a" letter-spacing="4">ΚΙΣΤΟΦΟΡΟΣ</text></g>`),
+
+babylon: frame(`<g transform="translate(300,182)">
+<path d="M-230 96 C-170 26 -70 26 -10 62 C50 98 130 84 176 34" fill="none" stroke="${T}" stroke-width="22" stroke-linecap="round"/>
+<path d="M176 34 l30 -12 l-4 -14 l28 14 l-28 14 l4 -14z" fill="${T}"/>
+<g stroke="${T}" stroke-width="5"><path d="M-120 42 l-16 -46"/><path d="M-80 34 l-6 -50"/><path d="M-40 40 l6 -48"/>
+<path d="M0 56 l18 -44"/><path d="M40 62 l26 -40"/><path d="M84 54 l34 -34"/><path d="M120 40 l40 -28"/></g>
+<g transform="translate(-40,-56)">
+<path d="M-34 100 l18 -104 h36 l18 104z" fill="${G}"/>
+<circle cx="2" cy="-24" r="22" fill="${G}"/>
+<path d="M-20 -46 h44 l-6 -12 h-32z" fill="${T}"/>
+<path d="M22 -8 q40 -14 54 -44" stroke="${G}" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M60 -68 h44 l-10 30 h-24z" fill="${G}"/>
+<ellipse cx="82" cy="-68" rx="22" ry="6" fill="${T}"/></g>
+<text x="0" y="-128" text-anchor="middle" font-family="Cinzel,serif" font-size="15" fill="${G}" letter-spacing="4">ΒΑΒΥΛΩΝ Η ΜΕΓΑΛΗ</text></g>`)
+};
+const PMAP = {
+ viper:"serpent", viper2:"serpent", viper3:"serpent", serpent2:"staff", beast:"serpent",
+ cup:"cup", cup2:"cup", poppy:"poppy", squill:"squill", wormwood:"wormwood", star:"star",
+ tree:"tree", mountain:"tree", garden:"tree", river:"river", spring:"river", ship:"river",
+ hand:"hand", hand2:"hand", wound:"hand", coin:"coin", coinnero:"coin", patmos:"coin",
+ jar:"jar", jar2:"jar", mortar:"jar", unguent:"jar", scroll:"scroll", scroll2:"scroll",
+ scroll3:"scroll", scales:"scales", scales2:"scales", bee:"bee", serpentstaff:"staff",
+ babylon:"babylon", throne:"throne", lamb:"lamb", coin2:"coin2"
+};
+function plateSVG(k){ return PL[PMAP[k]] || PL.scroll; }
+
+
+/*    GREEK: click any Greek word for transliteration, gloss and lookup links
+   ══════════════════════════════════════════════════════════════════════ */
+function nrm(w){return w.toLowerCase().normalize('NFD').replace(/[̀-ͯ̓̔͂ͅ]/g,'').normalize('NFC').replace(/ς/g,'σ').replace(/[’'ʼ·,.;:]/g,'')}
+const TR1={α:'a',β:'b',γ:'g',δ:'d',ε:'e',ζ:'z',η:'ē',θ:'th',ι:'i',κ:'k',λ:'l',μ:'m',ν:'n',ξ:'x',ο:'o',π:'p',ρ:'r',σ:'s',ς:'s',τ:'t',υ:'y',φ:'ph',χ:'ch',ψ:'ps',ω:'ō'};
+function translit(word){
+  const d=word.normalize('NFD');
+  let rough=/̔/.test(d.slice(0,4)), out='';
+  const base=d.replace(/[̀-ͯ]/g,'').toLowerCase();
+  for(let i=0;i<base.length;i++){
+    const a=base[i], b=base[i+1];
+    if(a==='ο'&&b==='υ'){out+='ou';i++;continue}
+    if(a==='ε'&&b==='ι'){out+='ei';i++;continue}
+    if(a==='α'&&b==='ι'){out+='ai';i++;continue}
+    if(a==='ο'&&b==='ι'){out+='oi';i++;continue}
+    if(a==='α'&&b==='υ'){out+='au';i++;continue}
+    if(a==='ε'&&b==='υ'){out+='eu';i++;continue}
+    if(a==='γ'&&(b==='γ'||b==='κ'||b==='χ')){out+='n';continue}
+    out += TR1[a]!==undefined?TR1[a]:a;
+  }
+  if(rough) out = (base[0]==='ρ') ? out.replace(/^r/,'rh') : 'h'+out;
+  return out;
+}
+const LEX={
+ φαρμακον:"drug — healing remedy, poison, or enchanted potion, all at once. The root of 'pharmacy'.",
+ φαρμακεια:"drug-working. LSJ: 1. use of drugs, esp. purgatives · 2. potions or spells · 3. poisoning, witchcraft · 4. metaph. a remedy, a cure.",
+ φαρμακειασ:"of drug-working (genitive of φαρμακεία).",
+ φαρμακειων:"of drug-workings (genitive plural) — Rev 9:21.",
+ φαρμακευσ:"the drug-man — poisoner, sorcerer, apothecary. One noun, no line drawn inside it.",
+ φαρμακοσ:"scapegoat — the man beaten with squill and driven out of the city at the Thargelia. One accent from φαρμακεύς.",
+ φαρμακοι:"drug-workers (plural) — Rev 22:15, outside the gates with the dogs.",
+ φαρμακοισ:"to/for drug-workers (dative plural) — Rev 21:8.",
+ φαρμακοπωλαι:"drug-sellers — the retail trade.",
+ ριζοτομοι:"root-cutters — the men who dug and sold medicinal roots.",
+ θηρ:"wild beast. The root under θηρίον.",
+ θηριον:"venomous beast. LSJ sense 3 is specifically the poisonous animal; sense 4 is a festering ulcer; sense 6 is the constellation Lupus.",
+ θηρια:"beasts (plural). Daniel 7 LXX calls the four empires θηρία.",
+ θηριου:"of the beast (genitive).",
+ θηριακη:"the beast-medicine — ἡ θηριακή, short for 'the antidote for venomous beasts'. Becomes theriac, and eventually treacle.",
+ θηριακοσ:"of or belonging to venomous beasts.",
+ θηριακοι:"theriac (plural adj.) — as in ἀρτίσκοι θηριακοί, the viper lozenges.",
+ αντιδοτοσ:"antidote — literally 'the thing given against'.",
+ γαληνη:"dead calm at sea. Andromachus' own name for his compound.",
+ αρτισκοι:"lozenges, little cakes — the dried compounded pellets.",
+ σκιλλητικοι:"of squill (σκίλλα, Drimia maritima) — the heaviest ingredient in the theriac.",
+ μαγμα:"a kneaded mass, a paste — the residue after pressing.",
+ ηδυχρουν:"sweet-coloured — the perfumed sub-preparation inside the theriac.",
+ οπιον:"opium, poppy latex — 24 drachmas in the formula.",
+ εχιδνησ:"of the viper (ἔχιδνα).",
+ αψινθιον:"wormwood, Artemisia absinthium — proverbially bitter.",
+ αψινθοσ:"Wormwood — as a proper name, the star of Revelation 8:11.",
+ αψινθιω:"with wormwood (dative).",
+ μελι:"honey.",
+ αττικον:"Attic — from Attica; the most prestigious honey.",
+ κατεπασασ:"you have sprinkled or dusted over (Menander's proverb).",
+ μαλαβαθροιο:"of malabathrum — an aromatic leaf, Cinnamomum tamala.",
+ φυλλα:"leaves — the workhorse noun of the whole materia medica.",
+ σφραγισ:"a seal, a stamped mark. σφραγὶς Λήμνου = Lemnian earth, a theriac ingredient.",
+ λημνου:"of Lemnos — the island where Philoctetes was abandoned.",
+ χαραγμα:"any mark engraven or imprinted. LSJ: the serpent's bite (Soph.) · the mark of the beast (Rev.) · the stamp on a coin (Plut.) · a brand.",
+ νομισματοσ:"of the coinage, of the money.",
+ μαρτυσ:"witness — a legal and evidentiary word, only later hardening into 'martyr'.",
+ αντιπασ:"Antipas — the one named martyr in Revelation, killed at Pergamon.",
+ απεκτανθη:"he was killed (aorist passive).",
+ πιστοσ:"faithful, trustworthy.",
+ σατανασ:"the Satan — the Adversary, from Hebrew śāṭān.",
+ σατανα:"of Satan (genitive).",
+ θρονοσ:"throne, seat.",
+ οφισ:"serpent, snake. In Asia, also the emblem of the healing god.",
+ αρχαιοσ:"ancient, from the beginning.",
+ διαβολοσ:"the slanderer, the accuser — Devil.",
+ πλανων:"deceiving, leading astray (participle of πλανάω). Used of the serpent at 12:9 and of Rome's drug-working at 18:23.",
+ πλαναω:"to lead astray, to make wander, to deceive.",
+ επλανηθησαν:"they were led astray (aorist passive) — Rev 18:23.",
+ οικουμενην:"the inhabited world.",
+ σωτηρ:"Saviour — a cult title of Asklepios, and of Christ.",
+ παιαν:"the Healer — cult title of Apollo and Asklepios.",
+ υγιεια:"health — as a state. Also the goddess Hygieia, daughter of Asklepios.",
+ υγιειαν:"health (accusative) — the word Ezekiel's Greek uses, and the one John changed.",
+ πανακεια:"All-Cure, Panacea — Asklepios' daughter; and what the theriac claimed to be.",
+ θεραπεια:"treatment, therapy — the clinical word for a course of care administered by someone.",
+ θεραπειαν:"therapy (accusative) — the word John substitutes at Rev 22:2.",
+ θεραπευω:"to attend, to treat medically, to heal.",
+ εθεραπευθη:"it was healed (aorist passive) — of the Beast's death-wound, Rev 13:3.",
+ πληγη:"a blow, a stroke, a wound; also a plague.",
+ θανατου:"of death.",
+ αβατον:"the not-to-be-trodden place — the dormitory of an Asklepieion where the sick slept for the god's visit.",
+ εγκοιμησισ:"incubation — sleeping in the sanctuary to receive the god's prescription in a dream.",
+ ιεροι:"sacred (plural).",
+ λογοι:"accounts, tales, discourses. Ἱεροὶ Λόγοι = Aristides' Sacred Tales.",
+ κιστη:"a basket or chest. κίστη μυστική = the mystic snake-basket of Dionysos, on Pergamon's coinage.",
+ μυστικη:"mystic, belonging to the mysteries.",
+ βασανοσ:"the touchstone — black jasper used to test gold. By extension, a trial or proof.",
+ αρχιατροσ:"chief physician — the imperial court appointment Andromachus held.",
+ αρνιον:"little lamb (diminutive of ἀρήν) — John's word for Christ, ~28 times.",
+ εστηκοσ:"standing (perfect participle).",
+ εσφαγμενον:"having been slaughtered (perfect passive participle).",
+ ποτηριον:"drinking cup. LSJ also lists a Galenic sense: an absorbent preparation.",
+ ακρατου:"unmixed, neat — of wine drunk undiluted, which Greeks considered dangerous.",
+ κεκερασμενου:"having been mixed, compounded (perfect passive participle of κεράννυμι).",
+ οινου:"of wine.",
+ θυμου:"of rage, of hot anger.",
+ οργησ:"of wrath.",
+ πιεται:"he shall drink (future).",
+ εσμυρνισμενον:"drugged with myrrh (perfect passive participle) — Mark 15:23, the wine Jesus refused.",
+ μυρον:"perfumed ointment, myrrh-oil.",
+ κινναμωμον:"cinnamon.",
+ αμωμον:"amomum — a rare aromatic of the cardamom family. In Rev 18:13's earliest manuscripts, and doubled in the theriac's perfume core.",
+ θυμιαματα:"incense, things burnt as fragrant offering.",
+ λιβανον:"frankincense.",
+ ξυλον:"wood; and, in the Greek Bible, a living tree. ξύλον ζωῆς = tree of life.",
+ ξυλου:"of the tree.",
+ ζωησ:"of life.",
+ δωρεαν:"freely, as a gift, without payment.",
+ εθνη:"the nations, the gentiles.",
+ εθνων:"of the nations (genitive).",
+ καρποσ:"fruit.",
+ αναβασισ:"the going-up — here the foliage, what rises from the tree.",
+ βρωσιν:"food, eating (accusative).",
+ εσται:"it shall be.",
+ ταδε:"these things — τάδε λέγει is the Septuagint's 'Thus says the Lord'.",
+ λεγει:"he says.",
+ οιδα:"I know (perfect with present force).",
+ κατοικεισ:"you dwell.",
+ εθαυμασθη:"it marvelled, it was filled with wonder (aorist passive).",
+ οπισω:"after, behind.",
+ εσθλα:"good things, noble things.",
+ λυγρα:"baneful, wretched things.",
+ μεμιγμενα:"mixed together (perfect passive participle).",
+ πολλα:"many.",
+ παντα:"all.",
+ ολη:"whole, entire.",
+ ολην:"whole (accusative).",
+ γη:"earth, land.",
+ θεου:"of God.",
+ χαριν:"for the sake of (with preceding genitive).",
+ καλουμενοσ:"called, named.",
+ και:"and — the commonest word in Greek, and the quickest test of whether a scanned Greek text was OCR'd properly.",
+ μεν:"on the one hand (correlative particle).",
+ δε:"but, and (correlative particle).",
+ εν:"in.", εκ:"out of, from.", εισ:"into, for.", ωσ:"as, like.",
+ το:"the (neuter).", του:"of the.", τη:"to the.", την:"the (fem. acc.).",
+ τησ:"of the (fem.).", των:"of the (plural).", τω:"to the.", τα:"the (neuter pl.).",
+ ο:"the (masc.).", η:"the (fem.); or 'or'.", οι:"the (masc. pl.).",
+ μου:"my, of me.", σου:"your, of you.", αυτου:"of him, of it.", αυτων:"of them.",
+ υμιν:"to you (plural).", παρ:"beside, among.", οσ:"who, which.", ον:"whom.",
+ που:"where.", οπου:"where, in the place where.", ποτηριω:"in the cup (dative)."
+};
+function popFor(word, x, y){
+  const pop=document.getElementById('pop');
+  const key=nrm(word), gl=LEX[key];
+  const morph='https://www.perseus.tufts.edu/hopper/morph?l='+encodeURIComponent(word)+'&la=greek';
+  const lsj='https://lsj.gr/wiki/'+encodeURIComponent(word);
+  pop.innerHTML=`<div class="x">✕</div><div class="w">${word}</div><div class="tr">${translit(word)}</div>`
+    + (gl?`<div class="gl">${gl}</div>`:`<div class="none">No gloss stored for this form. Use the morphology lookup below — it parses inflected words.</div>`)
+    + `<div class="lk">
+        <div class="lkrow"><span>MORPH</span><code>${morph}</code><button class="cp" data-cp="${morph}">⧉</button></div>
+        <div class="lkrow"><span>LSJ</span><code>${lsj}</code><button class="cp" data-cp="${lsj}">⧉</button></div>
+       </div>`;
+  pop.classList.add('on');
+  const r=pop.getBoundingClientRect();
+  pop.style.left=Math.max(10,Math.min(innerWidth-r.width-10,x-r.width/2))+'px';
+  pop.style.top=(y+18+r.height>innerHeight? y-r.height-14 : y+18)+'px';
+  pop.querySelector('.x').onclick=()=>pop.classList.remove('on');
+}
+document.getElementById('pop').addEventListener('click',e=>{ if(e.target.dataset.cp) copyText(e.target.dataset.cp) });
+addEventListener('click',e=>{
+  const g=e.target.closest('.grk');
+  if(g){ popFor(g.textContent.replace(/[·,.;:’'ʼ]+$/,''), e.clientX, e.clientY); e.stopPropagation(); return }
+  if(!e.target.closest('#pop')) document.getElementById('pop').classList.remove('on');
+});
+
+const GREEKRE=/[Ͱ-Ͽἀ-῿]+[Ͱ-Ͽἀ-῿’ʼ']*/g;
+const SKIP=new Set(['SCRIPT','STYLE','TEXTAREA','INPUT','BUTTON','CODE']);
+function greekify(root){
+  const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){
+    let p=n.parentElement;
+    while(p&&p!==root){
+      if(p instanceof SVGElement) return NodeFilter.FILTER_REJECT;
+      const tg=p.tagName;
+      if(SKIP.has(tg)||tg==='H2'||tg==='H3') return NodeFilter.FILTER_REJECT;
+      if(p.classList&&(p.classList.contains('cap')||p.classList.contains('ptag')||p.classList.contains('grk'))) return NodeFilter.FILTER_REJECT;
+      p=p.parentElement;
+    }
+    return GREEKRE.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+  }});
+  const targets=[]; let n; while(n=walk.nextNode()) targets.push(n);
+  targets.forEach(node=>{
+    const frag=document.createDocumentFragment(); let last=0, m; GREEKRE.lastIndex=0;
+    const t=node.nodeValue;
+    while((m=GREEKRE.exec(t))){
+      if(m.index>last) frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+      const sp=document.createElement('span'); sp.className='grk'; sp.textContent=m[0]; frag.appendChild(sp);
+      last=m.index+m[0].length;
+    }
+    if(last<t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    node.parentNode.replaceChild(frag,node);
+  });
+}
+
+/* ── copy helper (clipboard API is often blocked in embedded frames) ── */
+function copyText(t){
+  const done=()=>toast('Copied to clipboard');
+  try{ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,()=>fallback(t)); return } }catch(e){}
+  fallback(t);
+  function fallback(v){
+    const ta=document.createElement('textarea'); ta.value=v;
+    ta.style.cssText='position:fixed;left:-9999px;top:0'; document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    let ok=false; try{ ok=document.execCommand('copy') }catch(e){}
+    document.body.removeChild(ta);
+    toast(ok?'Copied to clipboard':'Select the address and copy it manually');
+  }
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button.cp'); if(!b||b.closest('#pop'))return;
+  if(b.dataset.cp){ copyText(b.dataset.cp); e.stopPropagation(); return }
+});
+
+
+
+/*    ΑΝΑΓΝΩΣΤΗΣ — the reader, built in.
+   Resolves editions live from the two Perseus repositories, so nothing
+   depends on a hard-coded file id that might not exist.
+   ══════════════════════════════════════════════════════════════════════ */
+const REPOS=[
+  {k:'canonical-greekLit', o:'PerseusDL',           r:'canonical-greekLit', b:'master'},
+  {k:'First1KGreek',       o:'OpenGreekAndLatin',   r:'First1KGreek',       b:'master'}
+];
+const SHELF=[
+ {lbl:'Galen · De antidotis', a:'tlg0057', w:'tlg078'},
+ {lbl:'Galen · all works',    a:'tlg0057'},
+ {lbl:'Revelation',           a:'tlg0031', w:'tlg027'},
+ {lbl:'Mark',                 a:'tlg0031', w:'tlg002'},
+ {lbl:'Sophocles',            a:'tlg0011'},
+ {lbl:'Homer',                a:'tlg0012'},
+ {lbl:'Homeric Hymns',        a:'tlg0013'},
+ {lbl:'Nicander',             a:'tlg0022'},
+ {lbl:'Dioscorides',          a:'tlg0656'},
+ {lbl:'Septuagint',           a:'tlg0527'}
+];
+let RRAW='', RPLAIN='', rNotes=false, rPending=null;
+
+const rq=x=>document.getElementById(x);
+function rstat(msg,err){ const e=rq('rstat'); e.className=err?'err':''; e.innerHTML=msg }
+
+function openReader(){ rq('reader').classList.add('open'); if(!rq('rShelf').childElementCount) buildShelf(); }
+function closeReader(){ rq('reader').classList.remove('open') }
+rq('bRead').onclick=()=>{ openReader(); if(!RRAW) rstat('Pick a text from the shelf, or paste a raw XML address. Anything under <b>PerseusDL/canonical-greekLit</b> or <b>OpenGreekAndLatin/First1KGreek</b> will render.') };
+rq('rClose').onclick=closeReader;
+
+function buildShelf(){
+  const sh=rq('rShelf');
+  sh.innerHTML='<span class="lbl">SHELF</span>'+SHELF.map((x,i)=>`<button data-shelf="${i}">${x.lbl}</button>`).join('')
+    +'<button data-browse="1" style="border-color:rgba(92,143,201,.45);color:#a8c4e0">browse by id…</button>';
+  sh.querySelectorAll('[data-shelf]').forEach(b=>b.onclick=()=>{const x=SHELF[+b.dataset.shelf];
+    x.w? listEditions(x.a,x.w) : listWorks(x.a)});
+  sh.querySelector('[data-browse]').onclick=()=>{
+    const v=prompt('Author id (e.g. tlg0057 for Galen, tlg0012 for Homer):','tlg0057'); if(v) listWorks(v.trim());
+  };
+}
+
+async function ghList(path){
+  for(const rp of REPOS){
+    try{
+      const r=await fetch(`https://api.github.com/repos/${rp.o}/${rp.r}/contents/${path}`);
+      if(r.ok){ const j=await r.json(); if(Array.isArray(j)) return {repo:rp, items:j} }
+    }catch(e){}
+  }
+  return null;
+}
+function showLib(html){ const l=rq('rlib'); l.style.display='block'; l.innerHTML=html }
+async function listWorks(author){
+  openReader(); rstat('Looking up <b>'+author+'</b> in both repositories…');
+  const res=await ghList('data/'+author);
+  if(!res){ rstat('No folder <b>data/'+author+'</b> found in either repository — check the author id, or the GitHub API may be rate-limited (60 requests an hour without a login).',1); return }
+  const works=res.items.filter(x=>x.type==='dir');
+  showLib(`<div class="crumb">${res.repo.k} · data/${author} — ${works.length} works</div>`
+    + works.map(w=>`<button class="it" data-w="${w.name}" data-a="${author}"><b style="color:#e6c98a">${w.name}</b></button>`).join(''));
+  rq('rlib').querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>listEditions(b.dataset.a,b.dataset.w));
+  rstat(`Found <b>${works.length}</b> works under ${author}. Pick one to see its editions.`);
+}
+async function listEditions(author,work){
+  openReader(); rstat('Looking up <b>'+author+'.'+work+'</b>…');
+  const res=await ghList(`data/${author}/${work}`);
+  if(!res){ rstat('No folder <b>data/'+author+'/'+work+'</b> in either repository.',1); return }
+  const files=res.items.filter(x=>/\.xml$/i.test(x.name)&&!/__cts__/i.test(x.name));
+  if(!files.length){ rstat('That folder has no edition files.',1); return }
+  const greek=files.filter(f=>/grc/i.test(f.name));
+  const list=(greek.length?greek:files);
+  showLib(`<div class="crumb">${res.repo.k} · data/${author}/${work} — ${list.length} edition${list.length===1?'':'s'}</div>`
+    + list.map(f=>`<button class="it" data-u="${f.download_url}"><b style="color:#e6c98a">${f.name.replace(/\.xml$/,'')}</b>`
+      +`<small> · ${/grc/i.test(f.name)?'Greek':'translation'}</small></button>`).join(''));
+  rq('rlib').querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{ rq('rurl').value=b.dataset.u; loadReader() });
+  if(list.length===1){ rq('rurl').value=list[0].download_url; loadReader() }
+  else rstat(`<b>${list.length}</b> editions. Greek ones are listed first — pick one.`);
+}
+
+/* ── TEI rendering ─────────────────────────────────────────────────── */
+const RDROP=new Set(['note','app','bibl','gap','pb','lb','figure','fw','teiHeader']);
+function rtxt(el){ return el? el.textContent.replace(/\s+/g,' ').trim() : '' }
+function rclean(el){
+  let t='', notes=[];
+  (function rec(n){ for(const c of n.childNodes){
+    if(c.nodeType===3){ t+=c.nodeValue; continue }
+    if(c.nodeType!==1) continue;
+    const nm=c.nodeName.toLowerCase();
+    if(RDROP.has(nm)){ if(nm==='note'||nm==='app') notes.push(rtxt(c)); continue }
+    if(nm==='milestone') continue;
+    rec(c);
+  }})(el);
+  return [t.replace(/\s+/g,' ').trim(), notes];
+}
+function renderTEI(xml){
+  let doc;
+  try{ doc=new DOMParser().parseFromString(xml,'application/xml') }
+  catch(e){ rstat('Could not parse that as XML.',1); return }
+  if(doc.querySelector('parsererror')){ rstat('That did not parse as XML. If you pasted it, make sure the whole file came across, starting with the first line.',1); return }
+
+  const h=doc.querySelector('teiHeader');
+  const g=(sel)=>rtxt(h&&h.querySelector(sel));
+  const title=g('titleStmt > title')||'(untitled)', author=g('titleStmt > author'),
+        editor=g('titleStmt > editor'), pub=g('publicationStmt > publisher'), src=g('sourceDesc');
+  let dl='<dl>';
+  if(editor) dl+=`<dt>EDITOR</dt><dd>${editor}</dd>`;
+  if(pub) dl+=`<dt>PUBLISHER</dt><dd>${pub}</dd>`;
+  if(src) dl+=`<dt>SOURCE</dt><dd>${src.slice(0,300)}</dd>`;
+  dl+='</dl>';
+  rq('rmeta').style.display=''; rq('rmeta').innerHTML=`<h2>${title}</h2>`+(author?`<div class="by">${author}</div>`:'')+dl;
+
+  const body=doc.querySelector('text > body')||doc.querySelector('body');
+  if(!body){ rstat('Parsed, but found no text body to display.',1); return }
+  const every=+rq('rEvery').value, out=[], plain=[], path=[];
+  const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  function row(n,ref,text){
+    const show = every && n && (String(+n)===String(n)? (+n%every===0||+n===1) : true);
+    out.push(`<div class="vs" data-ref="${ref}"><div class="n">${show?(ref||n):''}</div><div class="t">${esc(text)}</div></div>`);
+    plain.push((ref?String(ref).padStart(7)+'  ':'')+text+'\n');
+  }
+  function walk(node){
+    for(const c of node.childNodes){
+      if(c.nodeType===3){ if(c.nodeValue.trim()){ out.push(esc(c.nodeValue)); plain.push(c.nodeValue) } continue }
+      if(c.nodeType!==1) continue;
+      const nm=c.nodeName.toLowerCase();
+      if(nm==='note'||nm==='app'){ if(rNotes) out.push(`<div class="rnote">${esc(rtxt(c))}</div>`); continue }
+      if(nm==='l'){ const n=c.getAttribute('n')||''; const [t,ns]=rclean(c);
+        row(n, path.concat(n).filter(Boolean).join('.'), t);
+        if(rNotes) ns.forEach(x=>out.push(`<div class="rnote">${esc(x)}</div>`));
+        continue }
+      if(nm==='milestone'){ const u=(c.getAttribute('unit')||'').toLowerCase();
+        if(u==='para'){ out.push('<div class="brk"></div>'); plain.push('\n') }
+        else if(u==='card'||u==='section'){ const n=c.getAttribute('n'); if(n) out.push(`<h3 class="rsec">${u} ${n}</h3>`) }
+        continue }
+      if(nm==='head'||nm==='label'){ out.push(`<h3 class="rsec">${esc(rtxt(c))}</h3>`); plain.push('\n== '+rtxt(c)+' ==\n'); continue }
+      if(nm==='div'){
+        const n=c.getAttribute('n'), sub=c.getAttribute('subtype')||c.getAttribute('type')||'';
+        const kids=[...c.children].map(x=>x.nodeName.toLowerCase());
+        const leaf = n && !kids.includes('div') && !kids.includes('l');
+        if(n) path.push(n);
+        if(leaf){ const [t,ns]=rclean(c); row(n, path.filter(Boolean).join('.'), t);
+          if(rNotes) ns.forEach(x=>out.push(`<div class="rnote">${esc(x)}</div>`)); }
+        else {
+          if(n && sub && sub!=='edition'){ out.push(`<h3 class="rsec">${sub} ${n}</h3>`); plain.push(`\n== ${sub} ${n} ==\n`) }
+          walk(c);
+        }
+        if(n) path.pop();
+        continue;
+      }
+      if(nm==='p'){ const [t,ns]=rclean(c); out.push(`<p class="pr">${esc(t)}</p>`);
+        if(rNotes) ns.forEach(x=>out.push(`<div class="rnote" style="margin-left:0">${esc(x)}</div>`));
+        plain.push('\n'+t+'\n'); continue }
+      if(nm==='pb'||nm==='gap'||nm==='lb'||nm==='fw') continue;
+      walk(c);
+    }
+  }
+  walk(body);
+  const tx=rq('rtext'); tx.innerHTML=out.join('');
+  greekify(tx);
+  RPLAIN=title+(author?' — '+author:'')+'\n'+(editor?'ed. '+editor+'\n':'')+'\n'+plain.join('');
+  const n=tx.querySelectorAll('.vs').length;
+  rstat(n?`Rendered <b>${n}</b> numbered units. Click any Greek word for a gloss; use <b>go to</b> for a citation.`
+         :'Rendered. Click any Greek word for a gloss.');
+  if(rPending){ const r=rPending; rPending=null; setTimeout(()=>rJump(r),60) }
+}
+async function loadReader(){
+  const pasted=rq('rpaste').value.trim();
+  if(pasted){ RRAW=pasted; renderTEI(RRAW); return }
+  const u=rq('rurl').value.trim(); if(!u){ rstat('Give me an address, or pick from the shelf.',1); return }
+  rstat('Fetching…');
+  const tries=[u]; 
+  if(/grc2\.xml$/.test(u)) tries.push(u.replace('grc2.xml','grc1.xml'));
+  if(/grc1\.xml$/.test(u)) tries.push(u.replace('grc1.xml','grc2.xml'));
+  for(const t of tries){
+    try{ const r=await fetch(t); if(r.ok){ RRAW=await r.text(); rq('rurl').value=t; rq('rlib').style.display='none'; renderTEI(RRAW); return } }catch(e){}
+  }
+  rstat('Could not fetch that from inside this viewer. Open the raw file in a browser tab, select all and copy — then press <b>paste XML</b> and paste it here. It renders identically.',1);
+  rq('rpaste').style.display='block';
+}
+function rJump(ref){
+  ref=String(ref).trim().replace(/[:\s]+/g,'.');
+  const tx=rq('rtext');
+  tx.querySelectorAll('.vs.hi').forEach(e=>e.classList.remove('hi'));
+  let el=tx.querySelector(`.vs[data-ref="${CSS.escape(ref)}"]`);
+  if(!el){ const all=[...tx.querySelectorAll('.vs')]; el=all.find(e=>e.dataset.ref===ref)||all.find(e=>e.dataset.ref.endsWith('.'+ref))||all.find(e=>e.dataset.ref===ref.split('.').pop()); }
+  if(!el){ rstat('No unit numbered <b>'+ref+'</b> in this edition — numbering can differ between editions.',1); return }
+  el.classList.add('hi'); el.scrollIntoView({block:'center'});
+  rstat('At <b>'+ref+'</b>.');
+}
+function rFind(){
+  const v=rq('rfind').value.trim(); if(!v) return;
+  const nn=x=>x.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ς/g,'σ');
+  const t=nn(v); let first=null,c=0;
+  rq('rtext').querySelectorAll('.grk').forEach(g=>{ const hit=nn(g.textContent).includes(t);
+    g.classList.toggle('hit',hit); if(hit){c++; if(!first)first=g} });
+  rq('rtext').querySelectorAll('.vs.hi').forEach(e=>e.classList.remove('hi'));
+  if(first){ const v2=first.closest('.vs'); if(v2)v2.classList.add('hi'); first.scrollIntoView({block:'center'});
+    rstat(`<b>${c}</b> match${c===1?'':'es'} highlighted.`) }
+  else rstat('No match in the rendered text.',1);
+}
+rq('rLoad').onclick=loadReader;
+rq('rPasteBtn').onclick=()=>{const e=rq('rpaste');const on=e.style.display==='block';e.style.display=on?'none':'block';if(!on)e.focus()};
+rq('rJumpBtn').onclick=()=>rJump(rq('rjump').value);
+rq('rjump').addEventListener('keydown',e=>{if(e.key==='Enter')rJump(e.target.value)});
+rq('rFindBtn').onclick=rFind;
+rq('rfind').addEventListener('keydown',e=>{if(e.key==='Enter')rFind()});
+rq('rEvery').onchange=()=>{ if(RRAW) renderTEI(RRAW) };
+rq('rNotes').onclick=()=>{ rNotes=!rNotes; rq('rNotes').textContent='notes: '+(rNotes?'shown':'hidden'); if(RRAW) renderTEI(RRAW) };
+rq('rFs').onchange=e=>rq('rtext').style.setProperty('--rfs',e.target.value+'px');
+rq('rCopy').onclick=()=>copyText(RPLAIN||'nothing loaded yet');
+rq('rDl').onclick=()=>{const b=new Blob([RPLAIN||''],{type:'text/plain'});const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download='greek-text.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),3000)};
+
+/* open a citation straight from a node panel */
+async function openCitation(author,work,ref,label){
+  openReader(); rq('rlib').style.display='none';
+  rstat('Resolving <b>'+(label||author+'.'+work)+'</b>…');
+  rPending=ref||null;
+  const res=await ghList(`data/${author}/${work}`);
+  if(!res){ rPending=null; rq('rpaste').style.display='block';
+    rstat('Could not resolve that work from GitHub from inside this viewer (it allows 60 lookups an hour without a login, and some viewers block the request entirely). Paste the raw XML below instead — it renders identically.',1); return }
+  const files=res.items.filter(x=>/\.xml$/i.test(x.name)&&!/__cts__/i.test(x.name)&&/grc/i.test(x.name));
+  if(!files.length){ rPending=null; rstat('No Greek edition found in that folder.',1); return }
+  rq('rurl').value=files[0].download_url;
+  await loadReader();
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button.tei'); if(!b)return;
+  openCitation(b.dataset.a,b.dataset.w,b.dataset.ref,b.dataset.lbl); e.stopPropagation();
+});
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   THE DECK — 46 slides, ~40 minutes.
+   Every slide carries the words to say. Press S for the script drawer.
+   ══════════════════════════════════════════════════════════════════════ */
+const R={a:'tlg0031',w:'tlg027'}, MK={a:'tlg0031',w:'tlg002'},
+      GAL={a:'tlg0057',w:'tlg078'}, OD={a:'tlg0012',w:'tlg002'}, PHIL={a:'tlg0011',w:'tlg006'};
+
+const DECK=[
+
+/* ─────────── COLD OPEN ─────────── */
+{k:'title', gr:'ΘΗΡΙΑΚΗ', en:'The Beast-Medicine',
+ sub:'How the most famous drug in the Roman world got its name from a monster — and why the last book of the Bible was written against it',
+ plate:'jar',
+ script:`Good evening. I want to tell you about a medicine.
+
+It was the most famous medicine in the world for about eighteen hundred years. Emperors took it every day. Venice manufactured it into the eighteen hundreds and made a fortune. It had sixty-four ingredients, and one of them was a snake.
+
+Its Greek name is theriakē — θηριακή — and that word does not mean "cure." It means "the beast one." The most successful medicine in human history is named after the monster it was built to fight.
+
+Tonight I want to follow that name. Because I think it leads somewhere nobody expects: into the last book of the Bible, into a city on the coast of Turkey, and into an argument about who medicine is for — an argument that is two thousand years old and is not finished.`},
+
+{k:'big', line:'For eighteen hundred years, the most famous medicine in the world was named after a monster.',
+ sub:'That is not a metaphor. It is a translation.',
+ script:`Let me put that on the table first, because everything else hangs off it.
+
+Every European language still carries the beast in the word. Theriac in English. Thériaque in French. Teriaca in Italian. Theriak in German. And — worn down by four hundred years of English mouths — treacle. The stuff on your pudding is named after a snakebite antidote.
+
+Nobody called it the health-drug. Nobody called it the life-drug. They called it the beast-thing. Its identity was the enemy it was built against — and, because of how it was made, the enemy it contained.
+
+Hold that shape in your head: a remedy whose name is its enemy. We are going to see that shape again in a very strange place.`},
+
+{k:'list', head:'Where we are going', sub:'Seven moves, forty minutes',
+ items:['The drug — who built it, out of what, and whether it worked',
+        'The word — why Greek could not separate "medicine" from "poison"',
+        'The unwritten theriac — the pharmacy nobody wrote down',
+        'The room — who wrote Revelation, to whom, and why',
+        'The thesis — and the single sentence it stands on',
+        'The counter-prescription — the last image in the Bible',
+        'The armour — every objection, and what to say back'],
+ script:`Here is the shape of the next forty minutes.
+
+First the drug itself — who built it, what was actually in it, and whether it worked. It did, by the way, just not for the reasons anyone believed.
+
+Then a problem in the Greek language that most translations quietly hide from you.
+
+Then the part that took me longest to see: that the written recipe is the exception, and almost all ancient pharmacy was never written down at all.
+
+Then we walk into a room. First-century Asia Minor, seven small congregations, and a man on an island writing them a letter.
+
+Then I will put a thesis on the table, defend it, and — importantly — tell you exactly where it is weak, before anybody else does.
+
+If you take one thing away, I would like it to be the last section. But you will need the first six to believe it.`},
+
+/* ─────────── ACT I ─────────── */
+{k:'act', num:'Ι', gr:'Η ΘΗΡΙΑΚΗ', en:'The drug',
+ sub:'Built for a king who could not be poisoned, perfected for an emperor everyone wanted dead',
+ script:`Act one. The drug.`},
+
+{k:'plate', plate:'coin', head:'Μιθριδάτης', sub:'Mithridates VI of Pontus · 132–63 BC',
+ body:['So afraid of assassination that he dosed himself daily with sub-lethal poisons',
+       'His physician Crateuas assembled a compound antidote — about forty ingredients',
+       'Candidate remedies tested on condemned prisoners: this plant against the scorpion, this one against the viper, this one against aconite'],
+ script:`It starts with a frightened king.
+
+Mithridates the Sixth ruled Pontus, on the Black Sea coast, and he was so convinced somebody would poison him that he built tolerance on purpose. Every day, a little poison. Alongside it, a compound antidote his physician Crateuas put together — around forty ingredients, catalogued by what they were supposed to answer. This plant against the scorpion. This one against the viper. This one against aconite.
+
+He is said to have tested them on condemned prisoners, which tells you something about the ethics of first-century pharmacology.
+
+And then the ending that made him immortal. Defeated by Pompey, cornered, he takes poison rather than be captured — and it does not work. He has built too much tolerance. He has to ask one of his own officers to run him through with a sword.
+
+Whether or not that last scene happened, it is the founding myth of this whole tradition. And notice what it encodes: acquired tolerance. Immunology, three hundred years before anyone could name it.`},
+
+{k:'plate', plate:'coinnero', head:'Ἀνδρόμαχος', sub:'Andromachus of Crete · chief physician to Nero · c. 60s CE',
+ body:['Takes the inherited Mithridatic formula and raises it to <b>sixty-four</b> ingredients',
+       'Adds the flesh of the viper — the ingredient that gives the drug its name',
+       'Substantially increases the opium',
+       'Renames it <b>Γαλήνη</b> — and publishes the recipe as a poem'],
+ script:`A hundred years later, the formula reaches the court of Nero.
+
+Andromachus of Crete was archiatros — chief physician — to the emperor. Think about that job for a second. You are a Greek doctor from Crete, working for the most assassination-anxious man in the Roman world, and your responsibility is the compound that is supposed to keep him alive.
+
+What Andromachus did was part pharmacology and part branding. He raised the ingredient count to sixty-four. He added the flesh of the viper, which had not been in the Mithridatic version, and which is where the name comes from. He substantially increased the opium — remember that, it matters later. And he gave the whole thing a new name.
+
+Then he did the genuinely strange thing. He published the recipe as a poem.`},
+
+{k:'quote', lead:'The recipe opens by addressing the emperor by name',
+ gr:'Κλῦθι πολυθρονίου βριαρὸν σθένος ἀντιδότοιο,<br>Καῖσαρ, ἀδειμάντου δῶτορ ἐλευθερίης.',
+ tr:'Hear, Caesar, giver of fearless liberty — the mighty strength of the many-herbed antidote.',
+ cite:'ANDROMACHUS, preserved in GALEN, DE ANTIDOTIS I', tei:{...GAL,lbl:'Galen, De antidotis'},
+ script:`Elegiac couplets. Addressed to Nero, by name, in the first line.
+
+"Hear, Caesar, giver of fearless liberty — the mighty strength of the many-herbed antidote."
+
+Now, why would a pharmacist write in metre? It is not vanity, or not only vanity. Verse does three things prose cannot.
+
+It locks the quantities. You cannot quietly corrupt "six drachmas" into "sixteen" without breaking the metre — so the poem checks itself every time it is copied.
+
+It makes a hundred-line ingredient list memorisable by a compounder who may not read at all.
+
+And it makes the formula a possession. To know the drug is to know the poem, and the author's name rides in the first line forever.
+
+This is the oldest tamper-evident packaging in the history of medicine.
+
+Hold on to one detail: this poem survives because a court physician wanted credit from an emperor. That is unusual. We will come back to why.`},
+
+{k:'recipe', head:'τὰ ξδ´ — the sixty-four', sub:'Galen, De antidotis I.7 · quantities in drachmas, about 3.4 grams each',
+ script:`Here is the whole thing, by weight.
+
+I do not want you to read the names. I want you to read the numbers, because the numbers tell you what the drug was actually for.
+
+Squill first — forty-eight drachmas, the single heaviest active ingredient, and almost nobody talks about it.
+
+Then a four-way tie at twenty-four, and two of those four slots are opium and viper.
+
+Then a long tail of aromatics at six, four and two drachmas each — cinnamon, myrrh, frankincense, saffron, nard, cassia. Sixty-odd substances, most of them present in quantities that, in a compound this size, are pharmacologically close to noise.
+
+And then honey. A hundred and fifty drachmas. More than everything else in the recipe put together.
+
+Four of those aromatics are going to walk back on stage in about twenty-five minutes, in a completely different book. Remember cinnamon, amomum, myrrh and frankincense.`},
+
+{k:'quote', lead:'The viper is caught in spring, while it is feeding on fennel shoots',
+ gr:'Τῶν δ᾽ αὐτῶν οὐράς τε καὶ ἰοβόλους ἀπὸ κόρσας<br>τάμνοις, καὶ κενεὰς γαστέρας ἱδρύοις·',
+ tr:'Cut from these same creatures the tails and the venom-bearing heads, and set the emptied bellies aside.',
+ cite:'ANDROMACHUS, ap. GALEN, DE ANTIDOTIS I.6', plate:'serpent', tei:{...GAL,lbl:'Galen, De antidotis'},
+ script:`This is the signature ingredient, and the instructions are precise.
+
+You catch the viper in spring, after it has come out of the winter hole, while it is feeding on fennel shoots. You cut off the head and the tail and throw them away — Andromachus says both carry deadly burdens toward the tomb. You gut it, boil the body in an earthen pot with dill, take the bones out, work the flesh into little cakes with bread, and age them before they go into the compound.
+
+The logic is: like against like. The beast's own body must hold the answer to the beast's own venom — because otherwise, how does the viper survive itself?
+
+That is wrong. I will show you exactly how wrong in a few minutes. But I want to be careful here, because it is not stupid. It is the same intuition that produces antivenom serum eighteen centuries later. It is a wrong answer generated by an extremely good question.`},
+
+{k:'plate', plate:'river', head:'Γαλήνη', sub:'gah-LAY-nay — dead calm at sea',
+ body:['Not "antidote." Not "cure." A weather word — the flat, glassy stillness after a storm',
+       'Also the name of a Nereid',
+       'A body in the grip of venom or fever is a body in storm. The drug does not fight the storm. It flattens it.'],
+ script:`And he gave it a name.
+
+Not antidote. Not panacea. Galēnē — the word for the sea when the wind has stopped. That glassy, flat, silent water. It is also a sea-nymph's name.
+
+I love this, because it is not decorative. It is an accurate clinical description. A body in the grip of venom, or fever, or agony, is a body in storm. And this drug does not fight the storm. It flattens it.
+
+Which — given that there are twenty-four drachmas of opium in every batch — is exactly right.
+
+And notice the politics of the naming, because Andromachus certainly did. The emperor's physician gives the emperor's medicine a name meaning peace after storm. The Pax Romana, in a spoon.`},
+
+{k:'table', head:'Did it work?', sub:'Four effects it delivered reliably — and none of them are what it claimed',
+ cols:['what it did','what delivered it'],
+ rows:[['Analgesia and sedation','<b>Opium</b>, 24 dr. — morphine, a μ-opioid agonist'],
+       ['Cough and diarrhoea control','<b>Opium</b> — noscapine, and opioid effects on the gut'],
+       ['Cardiac support in oedema','<b>Squill</b>, 48 dr. — scillaren A, inhibiting Na⁺/K⁺-ATPase'],
+       ['Antispasmodic relief','<b>Papaverine</b>, plus the aromatic carminatives'],
+       ['Neutralising snake venom','<b>Nothing.</b> Venom is protein — boiled, salted, aged and digested, it is gone']],
+ script:`So: did it work?
+
+It did not do what it said. It did not neutralise venom, it did not cure plague, and it did not make anyone poison-proof.
+
+But it did four things, reliably, every time.
+
+The opium is a real analgesic and a real sedative — morphine, at somewhere between four and twenty-one per cent of crude opium by weight. It suppresses cough. It stops diarrhoea. It relieves anxiety.
+
+The squill is a cardiac glycoside — the same mechanism as digitalis, inhibiting the sodium-potassium pump in the heart muscle so the heart contracts harder. It was used for heart failure into the twentieth century. Red squill was sold as rat poison well past that.
+
+And the viper did nothing at all. Snake venom is protein. Boil it, salt it, dry it, age it, then send it through a human stomach, and what arrives in the blood is amino acids.
+
+But look at what that adds up to. A patient who took this stopped hurting, stopped coughing, stopped voiding, and went to sleep. In a world with none of those things, that is not a placebo. That is medicine.`},
+
+{k:'big', line:'The most successful piece of pharmaceutical branding in human history.',
+ sub:'A genuinely effective opioid–cardiotonic analgesic, wrapped in sixty aromatics, sold under the name of the monster, in a verse written for an emperor — and manufactured continuously for eighteen hundred years.',
+ script:`That is my verdict on the drug, and I want to state it carefully, because it is easy to be smug about the past and it is almost always a mistake.
+
+This was not superstition. It was also not modern medicine. It was a real analgesic wrapped in sixty aromatics and an unbeatable story.
+
+And the story kept working. A hundred years after Andromachus, Galen — the most important physician in the ancient world — records that the emperor Marcus Aurelius took theriac every single day. Not against a bite. As maintenance.
+
+Galen also notes, with visible distaste, that the habitual users tended to be people of mean and anxious character who could not live without fearing that somebody was going to kill them.
+
+So within a century the beast-medicine has completed a journey: emergency antidote, to imperial daily habit, to a drug whose main indication is the fear of being poisoned. And it is roughly four per cent opium by weight.
+
+It is worth asking what that daily dose was actually treating.`},
+
+/* ─────────── ACT II ─────────── */
+{k:'act', num:'ΙΙ', gr:'ΤΟ ΦΑΡΜΑΚΟΝ', en:'The word',
+ sub:'A problem in Greek that most English translations quietly hide from you',
+ script:`Act two. Now the language — and this is where the argument really begins.`},
+
+{k:'quote', lead:'Homer, on the drugs that grow in Egypt',
+ gr:'τῇ πλεῖστα φέρει ζείδωρος ἄρουρα φάρμακα,<br>πολλὰ μὲν ἐσθλὰ μεμιγμένα πολλὰ δὲ λυγρά·',
+ tr:'there the grain-giving earth bears drugs in greatest number — many good ones mixed together, and many baneful.',
+ cite:'HOMER, ODYSSEY 4.229–230', tei:{...OD,ref:'4.230',lbl:'Odyssey 4.230'},
+ script:`Greek has a word, φάρμακον — pharmakon — and it is the root of our word pharmacy.
+
+It means: a healing drug. It also means: a poison. It also means: an enchanted potion, a charm. It also means: a dye, or a chemical reagent.
+
+Not by ambiguity. By design. A pharmakon is a substance that acts on a body from outside. Whether it saves you or kills you is a question of dose and intent — not of category.
+
+Homer states the doctrine at its purest, here. Egypt, he says, grows drugs in greater number than anywhere — many good ones mixed together, and many baneful.
+
+The same soil. The mixing is the point.
+
+There is no Greek word that means "medicine" and excludes "poison." There simply isn't one. And that fact is about to become extremely important.`},
+
+{k:'lex', head:'φαρμακεία', sub:'far-mah-KAY-ah · the standard lexicon, in its own order',
+ entries:[['1','the use of drugs — <i>especially of purgatives</i>','Hippocrates, and the papyri'],
+          ['2','the use of any kind of drugs, potions, or spells','Plato, <i>Laws</i>'],
+          ['3','poisoning · witchcraft','Demosthenes, Polybius'],
+          ['4','<i>metaphorically</i> — a remedy, a cure','Aristotle, <i>Politics</i>']],
+ foot:'LIDDELL–SCOTT–JONES, s.v. φαρμακεία',
+ script:`Here is the noun for the activity: pharmakeia.
+
+I am showing you the entry from Liddell, Scott and Jones — the standard Greek lexicon, the one every classicist on earth uses — in the lexicon's own order, not mine.
+
+Sense one: the use of drugs, especially of purgatives. That is Hippocrates. That is clinical pharmacy.
+
+Sense two: the use of any kind of drugs, potions or spells.
+
+Sense three: poisoning, or witchcraft.
+
+Sense four: metaphorically — a remedy. A cure. That is Aristotle.
+
+So the word's first attested sense is pharmacy, its last is cure, and witchcraft sits in the middle.
+
+Now. When this word appears in the New Testament, your English Bible almost certainly prints "sorcery." One sense out of four, presented as the whole. I am not going to argue for the opposite mistake — I am not going to tell you it means the pharmaceutical industry. What I am going to tell you is that in the first century, these were not separable activities. The person who compounded your purgative and the person who compounded your love-charm were frequently the same person, working off the same shelf.`},
+
+{k:'big', line:'φαρμακεύς',
+ sub:'poisoner · sorcerer · <b>apothecary</b><br><span style="font-size:.6em;opacity:.7">One noun. No line drawn anywhere inside it.</span>',
+ script:`And here is the job title. Pharmakeus.
+
+The lexicon glosses it: poisoner, sorcerer, apothecary.
+
+That is one word, with those three glosses, and there is no line inside it. Not a blurry line — no line. Greek did not have the conceptual equipment to separate the chemist from the witch, because in practice they were frequently the same person and the same skill.
+
+Every time you see "sorcerer" in an English New Testament, I want you to hear all three.`},
+
+{k:'lex', head:'θηρίον', sub:'thay-REE-on · the same lexicon, three senses people miss',
+ entries:[['3','<b>poisonous animal</b>','Dioscorides 1.75 · Acts 28:4 — the viper on Paul\'s hand'],
+          ['4','<i>medical term</i> — = θηρίωμα, <b>a festering, malignant sore</b>','Hippocrates, <i>Coacae</i> 459'],
+          ['6','<i>astronomical</i> — the constellation <b>Lupus</b>','']],
+ foot:'LIDDELL–SCOTT–JONES, s.v. θηρίον',
+ script:`And now the other word. Thērion.
+
+Everybody translates it "beast," and that is fine as far as it goes. But look at what the lexicon actually lists.
+
+Sense three: poisonous animal. Specifically the venomous one — that is the technical sense in the medical writers, and the citation is Dioscorides, plus Acts chapter twenty-eight, the viper that fastens on Paul's hand when he is shipwrecked on Malta.
+
+Sense four, and this one is remarkable: it is a medical term for a festering, malignant ulcer. The beast and the sore are the same word.
+
+Sense six: it is the name of a constellation.
+
+So a Greek speaker in the first century, hearing "the thērion," is not hearing "a large animal." He is hearing a whole complex at once — the fang, the wound the fang leaves, and something in the sky.`},
+
+{k:'big', line:'ἡ θηριακή',
+ sub:'the feminine adjective that swallowed its noun<br><span style="font-size:.6em;opacity:.75">ἡ θηριακὴ ἀντίδοτος — "the antidote pertaining to venomous beasts" → <b>the beast one</b></span>',
+ script:`Which brings us back to the name of the drug.
+
+Theriakos is an adjective. It means "of, or belonging to, venomous beasts." The full phrase was hē thēriakē antidotos — the antidote pertaining to venomous beasts. And by ordinary Greek economy, the noun falls away and you are left with the adjective standing alone.
+
+Hē thēriakē. The beast one.
+
+Theriac. Thériaque. Teriaca. Treacle.
+
+The most famous medicine in the world is a feminine adjective with a missing noun, and the adjective means "monstrous."`},
+
+/* ─────────── ACT III ─────────── */
+{k:'act', num:'ΙΙΙ', gr:'ΑΓΡΑΦΟΣ ΘΗΡΙΑΚΗ', en:'The unwritten theriac',
+ sub:'The recipe you have just seen is the exception. Almost none of this was ever written down.',
+ script:`Act three. And this is the turn — the thing it took me longest to see.`},
+
+{k:'big', line:'The written recipe is the anomaly.',
+ sub:'Andromachus survives because a court physician wanted credit from an emperor and Galen copied him out. Underneath that single visible document lay an enormous body of practice that was never written at all.',
+ script:`We have spent fifteen minutes on a recipe. I now need to tell you that the recipe is the strange thing.
+
+Andromachus' formula survives for one reason: a court physician wanted credit from an emperor, published it in verse, and Galen copied it out three generations later. That is not how ancient pharmacy normally worked. That is a publicity event.
+
+Underneath that one visible document lay something enormous and almost entirely lost. Theriacs and antidotes compounded by temple staff. Root-cutters — rhizotomoi — who dug and sold medicinal roots. Drug-sellers in the market. Wandering pharmakeis. All of it transmitted orally, by apprenticeship, under obligation of secrecy.
+
+We know this partly because Galen complains about it constantly: recipes vary, ingredients are adulterated, practitioners will not tell you what they know. Theriac formulas differed from city to city for the next fifteen hundred years. Venice eventually compounded its theriac in public, in the square, under civic supervision — precisely because nobody trusted an unwitnessed batch.
+
+So here is the reframing that the rest of this talk depends on. The question is not "what did people read." The question is what people knew.`},
+
+{k:'plate', plate:'staff', head:'Ἀσκληπιὸς Σωτήρ', sub:'ass-klay-pee-OSS so-TARE · the serpent called Saviour',
+ body:['His emblem is a <b>snake coiled on a staff</b>',
+       'His founding myth: <b>a snake licked his ears clean and taught him secret knowledge</b>',
+       'Live Aesculapian snakes were kept in the sanctuaries — moving freely across the floor of the wards where the sick slept',
+       'Among his cult titles: <b>Σωτήρ — Saviour</b>',
+       'His daughters are personified drugs: <b>Ὑγίεια</b> (Health) and <b>Πανάκεια</b> (All-Cure)'],
+ script:`And what people knew, in the Greek East, was Asklepios.
+
+The healing god. His emblem is the snake coiled on a staff — it is still on ambulances. His founding myth is that a snake licked his ears clean and taught him secret knowledge: the serpent as the literal source of pharmacological wisdom, stated as myth.
+
+And these were not just symbols on a wall. The Aesculapian snake — a real, non-venomous species, named after him — was kept in the sanctuaries, and it moved freely across the floor of the dormitories where the sick were sleeping. An animal in the room, in the dark, touching patients.
+
+Among his cult titles is Sōtēr. Saviour.
+
+And his daughters are personified drugs. Hygieia — Health, where we get "hygiene." And Panakeia — Panacea. The All-Cure. Which is precisely what the theriac claimed to be.
+
+I want you to hold this whole picture, because in about ten minutes I am going to hand you a text that takes every single element of it and gives it to the villain.`},
+
+{k:'plate', plate:'river', head:'ἐγκοίμησις', sub:'the god prescribes in your sleep',
+ body:['You purify yourself, make an offering, and are admitted to the <b>ἄβατον</b> — the not-to-be-trodden place',
+       'You <b>sleep there</b>. In the night the god comes. Sometimes he touches the affected part; sometimes a snake does',
+       'In the morning you report the dream — and <b>a priest interprets it and prescribes accordingly</b>',
+       'Real drugs. Divine authorisation. Oral transmission. Nothing written that anyone can check.'],
+ script:`Here is how the therapy actually worked, and this is the load-bearing slide of the whole talk.
+
+You purified yourself. You made an offering. And then you were admitted to the abaton — the not-to-be-trodden place — and you slept there.
+
+In the night, the god came. Sometimes he touched the part of you that hurt. Sometimes a snake did, or a dog.
+
+And in the morning you reported what you had seen, and a priest interpreted the dream and prescribed the treatment accordingly.
+
+Sit with the structure of that for a moment. The remedy is real — drugs, diets, baths, purges, bleedings, all of it recognisably medicine. But the authorisation is a vision. The transmission is oral. The author is a god whose body is a snake. And none of it is written down as a formula that anyone outside the sanctuary could check.
+
+That is not a curiosity at the edge of ancient medicine. Across the Greek East it was one of its central institutions, and it ran for a thousand years.
+
+That is what I mean by the unwritten theriac.`},
+
+{k:'plate', plate:'scroll', head:'Αἴλιος Ἀριστείδης', sub:'the patient\'s notebook · Ἱεροὶ Λόγοι, written 171 CE',
+ body:['A celebrated orator falls chronically ill around 143 CE and goes to the <b>Pergamon</b> Asklepieion',
+       'He stays, on and off, for years — and writes up thirty years of what the god told him in dreams',
+       'Prescribed: fasting · strange diets · bloodletting · enemas · induced vomiting · total abstention from bathing — or immersion in freezing rivers',
+       '<i>"The fullest first-hand report of personal religious experience that survives from any pagan writer."</i> — Oxford Classical Dictionary'],
+ script:`And we are not guessing at what this felt like from the inside, because one man kept the record.
+
+Aelius Aristides was a celebrated orator. Around 143 CE he fell chronically ill, and he went to the Asklepieion at Pergamon — remember that name — and he stayed. On and off, for years. In 171 he wrote the whole thing up: the Sacred Tales, thirty years of what the god had told him in dreams.
+
+What did Asklepios prescribe? Fasting. Peculiar diets. Bloodletting. Enemas. Induced vomiting. Total abstention from bathing — or, alternatively, immersion in freezing rivers.
+
+A complete therapeutic regime, delivered nightly, by a god.
+
+Now, one honest caveat, and I will keep flagging these all night. Aristides is writing seventy-five years after the book I am about to discuss. Galen is born a generation after it too. Neither is a contemporary witness. What they are is proof that the institution was substantial enough to dominate two major careers within a lifetime. Use them for the culture. Never for the date.`},
+];
+
+DECK.push(...[
+/* ─────────── ACT IV ─────────── */
+{k:'act', num:'ΙV', gr:'ΤΟ ΔΩΜΑΤΙΟΝ', en:'The room',
+ sub:'Who wrote the Apocalypse, to whom, and what they were actually frightened of',
+ script:`Act four. Now we walk into the room.`},
+
+{k:'plate', plate:'scroll', head:'Ἰωάννης', sub:'a man called John, on a small island, in the worst Greek in the New Testament',
+ body:['Names himself four times, claims no office beyond <b>brother and fellow-sharer in the affliction</b>',
+       'On <b>Patmos</b>, "on account of the word of God and the testimony of Jesus" — most read this as exile',
+       'His Greek breaks concord constantly. He is not a man trained in Greek rhetoric.',
+       'He is saturated in the <b>Septuagint</b> — quoting Daniel, Ezekiel, Isaiah, Jeremiah almost without citation formulas, the way you quote a book you have memorised'],
+ script:`The Book of Revelation is written by a man who calls himself John. He names himself four times and claims no title at all beyond "your brother, and fellow-sharer in the affliction."
+
+He is on Patmos — a rocky island off the coast of what is now Turkey — "on account of the word of God and the testimony of Jesus," which most people read as banishment.
+
+Tradition says he is John the apostle. Most modern scholarship says he is an otherwise unknown Jewish-Christian prophet who happened to be called John, which was an extremely common name.
+
+And the giveaway is his Greek. Revelation's Greek is famously irregular — it breaks agreement, it leaves nouns in the wrong case, it thinks in Hebrew rhythms. This is not a man educated in Greek rhetoric.
+
+What he is saturated in is the Septuagint — the Greek Old Testament. He quotes Daniel, Ezekiel, Isaiah, Jeremiah and Zechariah constantly, almost never with a citation formula, the way you quote a book you have effectively memorised.
+
+Remember that, because it cuts both ways in this argument.`},
+
+{k:'list', head:'αἱ ἑπτὰ ἐκκλησίαι', sub:'seven real congregations, in seven real cities, on one postal circuit',
+ items:['Ephesus — has lost its first love','Smyrna','<b>Pergamon — "where Satan\'s throne is"</b>','Thyatira — eating what it should not eat','Sardis — asleep','Philadelphia','Laodicea — rich, lukewarm, and does not know it is naked'],
+ script:`He is writing to seven named congregations. Not symbols — addresses. They sit in a rough circle along the roads of the province of Asia, in the order a courier would walk them, starting from the port nearest Patmos.
+
+These were small groups inside large, rich, intensely civic Greek cities. Their members were dyers, tanners, smiths, traders. Which means they belonged to guilds — and guilds had patron gods, common meals, and sacrifices. A man who would not eat the guild's meat did not keep the guild's work.
+
+Now read the seven letters as a survey, and a pattern jumps out. Ephesus has lost its first love. Sardis is asleep. Laodicea is rich and lukewarm and does not know it is naked. Pergamon and Thyatira are eating things they should not eat.
+
+He is not writing into a prison. He is writing into an economy.`},
+
+{k:'quote', lead:'The old picture — an empire-wide Domitianic bloodbath — has been substantially abandoned. The book names exactly one martyr.',
+ gr:'Ἐξέλθατε ὁ λαός μου ἐξ αὐτῆς,<br>ἵνα μὴ συγκοινωνήσητε ταῖς ἁμαρτίαις αὐτῆς',
+ tr:'Come out of her, my people — so that you do not share in her sins.',
+ cite:'REVELATION 18:4', tei:{...R,ref:'18.4',lbl:'Revelation 18:4'},
+ script:`This matters enormously, so let me be blunt about it.
+
+The picture most people carry — Christians being hunted through the empire, Revelation written to console the persecuted — has been substantially abandoned by scholarship. There is no good evidence for systematic imperial persecution in the nineties. And the book itself names exactly one man who was killed. One.
+
+What the seven letters actually describe is an internal fight about assimilation. There are teachers — John calls them Balaam, the Nicolaitans, "Jezebel" — telling believers they can eat food sacrificed to idols and keep their place in civic life. They are almost certainly right about the economics. John thinks they are catastrophically wrong about everything else.
+
+So the book's job is not comfort. Its job is to make a functioning, prosperous, beautiful imperial order look — for the length of one reading aloud — like a monster coming up out of the sea.
+
+Hence the most practical sentence in the whole apocalypse. Come out of her, my people.
+
+And here is why that matters for us. If the crisis is participation rather than persecution, then every institution these people were embedded in is a legitimate target. The guild. The market. The imperial altar. And the healing sanctuary. You do not have to be persecuted by a hospital to be told to stop going.`},
+
+{k:'plate', plate:'lamb', head:'ἀρνίον / θηρίον', sub:'ar-NEE-on / thay-REE-on — and both of them are diminutives',
+ body:['<b>θηρίον</b> — "little beast," from θήρ. Used about <b>39</b> times. It is Rome: the imperial system, its cult, its economy.',
+       '<b>ἀρνίον</b> — "little lamb," from ἀρήν. Used about <b>28</b> times.',
+       'The Lamb is introduced as <b>ἀρνίον ἐστηκὸς ὡς ἐσφαγμένον</b> — a lamb standing, as though slaughtered',
+       'And nobody fights. The Beast is conquered by people who refuse it and are killed.'],
+ script:`Now, where does the Beast fit? Here.
+
+The architecture of Revelation is a duel between two diminutives. Thērion is the diminutive of thēr — the little beast. Arnion is the diminutive of arēn — the little lamb. He uses thērion about thirty-nine times and arnion about twenty-eight, and nearly every scene in the book is one of them doing something.
+
+The Beast is Rome. More precisely, the whole imperial system: its power, its cult, its economy, its capacity to make everybody bow. And its features are lifted wholesale from Daniel chapter seven, where four beasts — thēria in the Greek — are four empires. That is settled, and my argument does not need it to be otherwise. I will come back to that.
+
+The Lamb is Christ, but presented very specifically: a lamb standing, as though slaughtered. It has already been killed. That is the source of its authority.
+
+And here is the move that matters tonight. The Lamb never fights. Nobody fights. The Beast is conquered by people who refuse it and are killed — "they conquered him by the blood of the Lamb and by the word of their testimony, and they did not love their lives unto death."
+
+Which means the counter to a beast-medicine, in this book's logic, cannot be a better drug. It has to be a refusal — and then a remedy that comes from entirely outside the economy. Hold that thought until the last act.`, tei:{...R,ref:'12.11',lbl:'Revelation 12:11'}},
+
+/* ─────────── ACT V ─────────── */
+{k:'act', num:'V', gr:'ΠΕΡΓΑΜΟΣ', en:'The serpent city',
+ sub:'The one city John singles out as the seat of the adversary',
+ script:`Act five. Pergamon.`},
+
+{k:'quote', lead:'No other city in the seven letters gets language remotely like this',
+ gr:'Οἶδα ποῦ κατοικεῖς, ὅπου ὁ θρόνος τοῦ Σατανᾶ',
+ tr:'I know where you dwell — where Satan\'s throne is.',
+ cite:'REVELATION 2:13', plate:'throne', tei:{...R,ref:'2.13',lbl:'Revelation 2:13'},
+ script:`"I know where you dwell — where Satan's throne is." And again, at the end of the same verse: "where Satan dwells."
+
+No other city in the seven letters gets anything like this. Not Laodicea, which he despises. Not Sardis, which is dead. Pergamon gets the throne.
+
+So: what is the throne?`},
+
+{k:'table', head:'Four candidates — and they are not competing', sub:'Pergamon is a single skyline in which all four are visible at once',
+ cols:['candidate','the case for it'],
+ rows:[['The Great Altar of Zeus','Enormous, elevated, and shaped like a throne — a broad podium with flanking wings. The most popular identification, and largely visual.'],
+       ['The imperial cult','Pergamon held the <b>first neocorate in the province of Asia</b> — the first imperial-cult temple in the province, under Augustus. If the Beast is Rome worshipping itself, its Asian throne is here.'],
+       ['Roman jurisdiction','A conventus seat, where the proconsul held assize and exercised capital jurisdiction. Note that the letter opens with <b>the sharp two-edged sword</b> — the <i>ius gladii</i>, the right of the sword.'],
+       ['<b>The Asklepieion</b>','The greatest healing sanctuary in the Greek world, three kilometres from the acropolis: a god titled <b>Saviour</b>, worshipped as a <b>serpent</b>, who prescribed remedies to sleeping patients.']],
+ script:`There are four standing candidates, and I want to be scrupulous here, because this is exactly the point where somebody will try to catch you out.
+
+One: the Great Altar of Zeus. Enormous, elevated, and genuinely shaped like a throne — a broad podium with wings on either side. Most popular identification, and it is essentially a visual argument.
+
+Two: the imperial cult. Pergamon held the first neocorate in the province of Asia — the first temple of the imperial cult anywhere in the province, under Augustus. If the Beast is Rome worshipping itself, its Asian throne is here.
+
+Three: Roman jurisdiction. Pergamon was an assize seat, where the proconsul exercised capital jurisdiction. And notice that the letter to Pergamon opens by describing Christ as "the one who has the sharp two-edged sword" — which is the ius gladii, the right of the sword, the Roman shorthand for exactly that power. So the letter to the city that holds the sword opens by informing it that the sword belongs to somebody else.
+
+And four: the Asklepieion.
+
+Now — these are not competing. That is the thing to say out loud. Pergamon is one skyline. A believer walking down from the acropolis passed the altar, the imperial temple, the proconsul's seat, and then the road to the healing god. My argument does not need the Asklepieion to be the sole referent. It needs it to be in the frame — and it is unavoidably in the frame.`},
+
+{k:'plate', plate:'coin2', head:'ὁ κιστοφόρος', sub:'kiss-toh-FOR-os · the snake on the money',
+ body:['From shortly before 190 BC, Pergamon struck a silver tetradrachm that became the standard coinage of its whole sphere',
+       'Named for what is on it: the <b>κίστη μυστική</b>, the mystic basket of Dionysos — <b>the snake-basket</b>',
+       'The standard type shows the basket half-open with a <b>serpent emerging</b>; the reverse carries a bow-case with <b>serpents entwined about it</b>',
+       'The Romans went on striking cistophori after they inherited the kingdom, down to the Severan period'],
+ script:`And there is one more object in that city, and it is the one I did not expect.
+
+From shortly before 190 BC, Pergamon struck a distinctive silver coin that became the standard currency of its whole sphere. It is named for what is on it: the kistē mystikē — the mystic basket of Dionysos. Which is to say: the snake-basket.
+
+The standard type shows the basket half open, with a serpent coming out of it, inside an ivy wreath. The reverse carries a bow-case with serpents entwined around it. The Romans kept striking these coins for centuries after they inherited the kingdom.
+
+So in Pergamon, the money has a snake on it.
+
+Hold that. It becomes important in about six minutes, and when it does, I want you to already know it.`},
+
+/* ─────────── ACT VI ─────────── */
+{k:'act', num:'VΙ', gr:'Η ΘΕΣΙΣ', en:'The thesis',
+ sub:'Stated plainly, so that it can be argued with',
+ script:`Act six. Here is what I actually want to claim.`},
+
+{k:'thesis', head:'Η ΘΕΣΙΣ', 
+ lines:['The Apocalypse was written to seven congregations living inside the greatest <b>serpent-healing culture</b> in the ancient world.',
+        'Its author takes that culture\'s entire vocabulary — the beast, the serpent, the saviour-title, the mark, the mixed cup, the drug-working, the healing leaf — and <b>reassigns every element of it to the adversary</b>.',
+        'And then, in his last chapter, he issues a <b>counter-prescription</b>.'],
+ not:'This is <b>not</b> the claim that a recipe is encrypted in the text. Nobody hid Andromachus\' drachma-counts in Greek numerals. That reading is a trap and it is not needed.',
+ script:`So. The thesis, in three sentences.
+
+The Apocalypse was written to seven congregations living inside the greatest serpent-healing culture in the ancient world.
+
+Its author takes that culture's entire vocabulary — the beast, the serpent, the saviour-title, the mark, the mixed cup, the drug-working, the healing leaf — and reassigns every single element of it to the adversary.
+
+And then, in his last chapter, he issues a counter-prescription.
+
+Let me be equally clear about what I am not claiming, because there is a version of this argument circulating on the internet and it is rubbish. I am not saying a recipe is encrypted in the text. Nobody hid drachma counts in Greek numerals. That reading is a trap, it is unfalsifiable, and — this is the important part — it is not needed. The argument is stronger without it.
+
+I am claiming that John is arguing with a practice. Not a manuscript. A living, largely unwritten body of serpent-derived pharmacy, held by temple personnel and independent pharmakeis, whose divine guarantor was a god called Saviour with a snake on his staff — and whose provincial capital John names, in chapter two, as the seat of Satan.
+
+Now let me show you the evidence.`},
+
+{k:'twoquote', head:'ὁ πλανῶν', sub:'ho plah-NONE — "the one deceiving." The same participle, twice, six chapters apart.',
+ a:{gr:'ὁ ὄφις ὁ ἀρχαῖος, ὁ καλούμενος Διάβολος καὶ ὁ Σατανᾶς, <b>ὁ πλανῶν</b> τὴν οἰκουμένην ὅλην',
+    tr:'the ancient serpent, the one called Devil and Satan, <b>who deceives</b> the whole inhabited world',
+    cite:'REVELATION 12:9'},
+ b:{gr:'ἐν τῇ <b>φαρμακείᾳ</b> σου <b>ἐπλανήθησαν</b> πάντα τὰ ἔθνη',
+    tr:'by your <b>drug-working</b> all the nations <b>were led astray</b>',
+    cite:'REVELATION 18:23'},
+ tei:{...R,ref:'12.9',lbl:'Revelation 12:9'},
+ script:`This is the strongest single thing I have, and it is two verses.
+
+Chapter twelve. The great dragon is thrown down — "the ancient serpent, the one called Devil and Satan, ho planōn tēn oikoumenēn holēn" — the one deceiving the whole inhabited world.
+
+Chapter eighteen, on the fall of Rome: "by your pharmakeia — your drug-working — all the nations eplanēthēsan." Were led astray. Were deceived.
+
+Same verb. Planaō. Once of the serpent, once of the drugs.
+
+So in this book, serpent, deception and drugs are chained together by a single word — and the man doing the chaining is writing to a province whose civic identity was serpent-healing, and to a city he has already called Satan's throne.
+
+If you remember one slide tonight, make it this one. Read the two verses back to back and let people hear ho planōn twice.`},
+
+{k:'quote', lead:'And now look at why the world worships the Beast in the first place',
+ gr:'καὶ ἡ πληγὴ τοῦ θανάτου αὐτοῦ <b>ἐθεραπεύθη</b>.<br>καὶ ἐθαυμάσθη ὅλη ἡ γῆ ὀπίσω τοῦ θηρίου',
+ tr:'and its death-wound was healed — and the whole earth marvelled after the beast.',
+ cite:'REVELATION 13:3', tei:{...R,ref:'13.3',lbl:'Revelation 13:3'},
+ script:`Here is a verse almost nobody reads carefully, and it is four words long in Greek.
+
+One of the Beast's heads was as though slaughtered to death — and hē plēgē tou thanatou autou etherapeuthē. Its death-wound was healed. And the whole earth marvelled after the beast.
+
+The verb is therapeuō. Remember it. We are going to meet its noun in the last act of this talk.
+
+Now, think about what that sentence actually says. The world does not worship the Beast because it is strong. It does not worship the Beast because it is frightening. It worships the Beast because it was mortally wounded and got better.
+
+The engine of the beast-cult, in the text itself, is a healing.
+
+And Daniel's four beasts — the source of the imagery, which I have already conceded — do nothing of the kind. There is no healing in Daniel. The healing is John's own addition.
+
+In a province whose greatest sanctuary sold exactly that, that is a remarkable thing for a prophet to write.`},
+
+{k:'lex', head:'χάραγμα', sub:'KHAH-rag-mah · "any mark engraven or imprinted" — the lexicon\'s citations, in its own order',
+ entries:[['1','<b>χάραγμα ἐχίδνης</b> — the serpent\'s mark, i.e. <b>its bite</b>','Sophocles, <i>Philoctetes</i> 267'],
+          ['2','<b>τὸ χάραγμα τοῦ θηρίου</b> — the mark of the beast','Revelation 13:16, 16:2'],
+          ['3','<b>τὸ χάραγμα τοῦ νομίσματος</b> — the stamp on a coin','Plutarch, <i>Lysander</i> 16'],
+          ['4','the branding mark on camels; the official seal on documents','the papyri']],
+ foot:'LIDDELL–SCOTT–JONES, s.v. χάραγμα', tei:{...PHIL,ref:'267',lbl:'Sophocles, Philoctetes 267'},
+ script:`And now the mark.
+
+This is the lexicon entry for charagma, "any mark engraven or imprinted," and I am giving you the citations in the order the lexicon gives them, not an order I chose.
+
+First: charagma echidnēs — the serpent's mark, that is, its bite. Sophocles, Philoctetes, line 267.
+
+Second: to charagma tou thēriou — the mark of the beast. Revelation.
+
+Third: the stamp on a coin. Plutarch.
+
+Fourth: the branding mark on camels, and the official seal on documents, from the papyri.
+
+The standard reference work of the discipline files the viper's bite and the mark of the beast two lines apart, under one headword.
+
+Now hold all four senses at once, because Revelation 13:17 requires you to: no one may buy or sell without the charagma. The coin sense and the brand sense are unmistakably live — this is an economic image.
+
+And underneath them, in the same word, is the puncture wound of a snake. In a city where the coinage has a serpent on it.
+
+Here is how to pitch that without overreaching, and I would ask you to steal this phrasing. Do not say "charagma means snakebite here." Say: this is a word that carries snakebite, coin-stamp and cattle-brand simultaneously, and John used it on a population that handled serpent-stamped money in a serpent-healing city. That version cannot be knocked down.`},
+
+{k:'plate', plate:'wound', head:'Φιλοκτήτης', sub:'the source the lexicon cites — a play about an incurable snakebite',
+ body:['Bitten by a snake at the shrine of Chryse on the way to Troy. The wound <b>will not close</b>.',
+       'It suppurates. It stinks. He screams. The Greek army abandons him alone on <b>Lemnos</b> for ten years because they cannot bear the smell and the sound of him.',
+       'In Sophocles the χάραγμα is a wound that marks a man permanently and <b>expels him from the community</b>',
+       'In Revelation the mark makes you an <i>insider</i> — and its <i>absence</i> expels you from the market'],
+ script:`And it is worth knowing what that first citation actually is, because it is one of the great Greek plays about medicine and abandonment.
+
+Philoctetes is bitten by a snake on the way to Troy. The wound will not close. It suppurates, it stinks, he screams — and the Greek army abandons him alone on the island of Lemnos for ten years, because they cannot stand the smell and the sound of him.
+
+So in Sophocles, the charagma is a wound that marks a man permanently and expels him from the community.
+
+In Revelation it is inverted. There, the mark makes you an insider — and it is the absence of it that throws you out of the market.
+
+And one more gift, which I offer as a curiosity rather than an argument: the lexicon's fourth sense of thērion is thēriōma, a festering ulcer. Philoctetes has a thērion in his foot in both senses at once.
+
+Also, Lemnos is the island. And Lemnian earth — sphragis Lēmnou, "the seal of Lemnos" — is an ingredient in the theriac. Four drachmas. Sphragis, incidentally, is another word for a stamped mark.
+
+I am not building anything on that. I just cannot stop looking at it.`},
+
+{k:'quote', lead:'Revelation 18 mourns a cargo list — and four of its aromatics are in the theriac',
+ gr:'καὶ κιννάμωμον καὶ <b>ἄμωμον</b> καὶ θυμιάματα<br>καὶ μύρον καὶ λίβανον…',
+ tr:'and cinnamon and amomum and incense and myrrh and frankincense…',
+ cite:'REVELATION 18:13 · ἄμωμον stands in the critical text on the earliest witnesses; the Byzantine tradition and the Textus Receptus omit it',
+ tei:{...R,ref:'18.13',lbl:'Revelation 18:13'},
+ script:`Chapter eighteen is Rome burning, and the governing image is commerce: the merchants of the earth weeping over a cargo list.
+
+Here is part of that list. Cinnamon, amomum, incense, myrrh, frankincense.
+
+All four of the named aromatics are ingredients in Andromachus' theriac.
+
+Now — I have to calibrate this honestly, because it is the point where people overclaim. Cinnamon, myrrh and frankincense were the ordinary luxury trade of the Roman East. They were in perfume, incense, cooking, embalming. Finding them in a cargo list proves very little on its own.
+
+The one worth pressing is amomum. It is a rare word. It stands in the critical text of Revelation on the strength of the earliest manuscripts, and the Byzantine tradition drops it — which is why it is missing from the King James and present in modern translations. And it sits in the theriac twice: four drachmas in the main list, and double weight in the perfumed core.
+
+What that shows is not a cipher. It shows that Revelation 18 and the theriac are drawing on the same narrow eastern supply chain — and that John is watching that supply chain burn while calling its operators drug-workers.
+
+That is a real convergence, and it needs no exaggeration at all.`},
+
+{k:'quote', lead:'The only star in the Bible with a botanical name', plate:'star',
+ gr:'καὶ τὸ ὄνομα τοῦ ἀστέρος λέγεται ὁ Ἄψινθος… καὶ πολλοὶ τῶν ἀνθρώπων ἀπέθανον ἐκ τῶν ὑδάτων, ὅτι ἐπικράνθησαν.',
+ tr:'And the name of the star is called the Wormwood… and many of the people died from the waters, because they were made bitter.',
+ cite:'REVELATION 8:11', tei:{...R,ref:'8.11',lbl:'Revelation 8:11'},
+ script:`One more, and then I am going to argue against myself.
+
+The third trumpet. A great star burning like a lamp falls on a third of the rivers, and the star has a name — ho Apsinthos. Wormwood. Artemisia absinthium, and the lexicon confirms the identification from Hippocrates, Theophrastus and Dioscorides.
+
+It is the only star in the Bible with a botanical name.
+
+And the chemistry is real. The active principle of wormwood is alpha-thujone, and the pharmacology was settled in 2000: thujone blocks the GABA-A receptor at the picrotoxinin site. That is, it shuts down the brain's main inhibitory channel. Which is why the classic picture is restlessness, and then convulsions. A GABA antagonist in the water supply is precisely a thing that kills people.
+
+So the toxicology in Revelation 8 is sound.
+
+But — and here is where I hand you the knife — wormwood as divine judgement is a Septuagint formula. Jeremiah has God feeding the people wormwood and giving them poisoned water to drink. Revelation 8 is quoting Jeremiah, not Andromachus.
+
+Which does not make the chemistry untrue. It means John reached for a scriptural bitterness that happened to be a convulsant. Whether he knew that is a fair question and an unanswerable one.
+
+I am telling you that because I would rather you heard it from me than from row three.`},
+]);
+
+DECK.push(...[
+/* ─────────── ACT VII ─────────── */
+{k:'act', num:'VΙΙ', gr:'ΤΟ ΞΥΛΟΝ ΖΩΗΣ', en:'The counter-prescription',
+ sub:'The last image in the Bible is a pharmacy',
+ script:`Act seven. And this is what I actually came to say.`},
+
+{k:'quote', lead:'The last chapter of the last book', plate:'tree',
+ gr:'…καὶ τὰ φύλλα τοῦ ξύλου εἰς <b>θεραπείαν</b> τῶν ἐθνῶν.',
+ tr:'…and the leaves of the tree are for the therapy of the nations.',
+ cite:'REVELATION 22:2', tei:{...R,ref:'22.2',lbl:'Revelation 22:2'},
+ script:`A river of living water runs out from under the throne. On either side of it stands the tree of life, bearing twelve fruits, one every month. And — the last medical statement in the Bible — the leaves of the tree are for the therapeia of the nations.
+
+Therapeia is not a vague word. It is the standard clinical term. It is what Galen and Dioscorides call a course of treatment.
+
+And phylla — leaves — is the workhorse noun of the entire ancient materia medica. The theriac poem itself calls for phylla malabathroio, leaves of malabathrum.
+
+So the book that condemned drug-working closes by prescribing a leaf. Twelve harvests a year, growing on both banks, requiring no compounding, no viper, no physician, no temple, no emperor, and no purchase.
+
+Say this part slowly, because it is the point: John does not abolish medicine. He re-sites it. The remedy is still a plant. It is still applied to bodies. It is still called therapy. What changes is who owns it.`},
+
+{k:'quote', lead:'But before you build anything on that — know where it comes from',
+ gr:'καὶ ἔσται ὁ καρπὸς αὐτῶν εἰς βρῶσιν<br>καὶ ἀνάβασις αὐτῶν εἰς <b>ὑγίειαν</b>',
+ tr:'and their fruit shall be for food, and their foliage for health.',
+ cite:'EZEKIEL 47:12 · SEPTUAGINT · six centuries earlier',
+ script:`Six hundred years earlier, in exile in Babylon, Ezekiel is shown water trickling out from under the threshold of a restored temple. It deepens as it runs — ankles, knees, waist, then a river he cannot cross — and it flows east into the Dead Sea and makes it live. Fish in it. Fishermen standing on the banks. And trees on both sides, fruiting every month, "because their waters flow out of the sanctuary."
+
+And the sentence ends: their fruit for food, and their foliage eis hygieian — for health.
+
+Revelation 22 is a near-quotation of this. Both banks. Monthly fruit. Healing leaves. John has read Ezekiel and compressed a whole grove into one tree. Nobody disputes this.
+
+Now — you might think that weakens my case. It does the opposite. Because once you know exactly what he inherited, you can see exactly what he changed.`},
+
+{k:'change', head:'One word', sub:'What John altered when he quoted it',
+ rows:[['ὑγίεια','health','a <i>state a body is in</i>','θεραπεία','therapy','a <i>treatment somebody administers</i>'],
+       ['—','(no object)','Ezekiel names no patient','τῶν ἐθνῶν','of the nations','a patient population, named']],
+ script:`He changed two things. Both deliberate — because a man quoting from memory does not drift toward a more technical word. Drift goes the other way.
+
+First. Where the Septuagint has hygieia — health — John writes therapeia. And the difference is not stylistic. Hygieia is a state a body is in. Therapeia is a treatment somebody administers. The second one is a practitioner's word. It presumes a hand.
+
+Second. Ezekiel names no patient at all. John adds tōn ethnōn — of the nations.
+
+Two edits. And the second one is the gun.`},
+
+{k:'twoquote', head:'Same population. Opposite prescription.', sub:'Four chapters apart',
+ a:{gr:'ἐν τῇ φαρμακείᾳ σου ἐπλανήθησαν πάντα <b>τὰ ἔθνη</b>',
+    tr:'by your drug-working, <b>all the nations</b> were led astray',
+    cite:'REVELATION 18:23'},
+ b:{gr:'τὰ φύλλα τοῦ ξύλου εἰς θεραπείαν <b>τῶν ἐθνῶν</b>',
+    tr:'the leaves of the tree, for the therapy <b>of the nations</b>',
+    cite:'REVELATION 22:2'},
+ script:`Because he had already used that phrase — ta ethnē, the nations — four chapters earlier, in one of the most memorable sentences he ever wrote.
+
+"By your drug-working, all the nations were led astray."
+
+And now, at the end: "the leaves of the tree, for the therapy of the nations."
+
+Same population. Opposite prescription.
+
+He took a healing line out of his scripture, swapped in the clinical noun, and aimed it at the exact people he had earlier said were drugged.
+
+Let me say clearly what this does and does not prove, because I am not going to oversell it. It does not prove John knew Andromachus. It does not prove he had ever heard of the theriac.
+
+It proves that John was thinking about the nations medically. That he framed Rome's crime as a drugging and God's remedy as a therapy — and edited his own scripture so that the second one answers the first.
+
+That is an author's fingerprint. It is not a coincidence of vocabulary. And it is the best evidence I have.`},
+
+{k:'quote', lead:'And then the price', plate:'spring',
+ gr:'ἐγὼ τῷ διψῶντι δώσω ἐκ τῆς πηγῆς τοῦ ὕδατος τῆς ζωῆς <b>δωρεάν</b>.',
+ tr:'To the one who thirsts I will give from the spring of the water of life — freely.',
+ cite:'REVELATION 21:6 · and again at 22:17', tei:{...R,ref:'21.6',lbl:'Revelation 21:6'},
+ script:`Twice, at both ends of the vision, the water is offered dōrean. Gratis. Without payment.
+
+And set that against chapter thirteen, nine chapters earlier: no one may buy or sell without the mark.
+
+The book's two rival economies could not be drawn more sharply. Under the Beast, access to goods requires a stamp on your body. In the city, the remedy has no price at all.
+
+And this is where the medical reading finally earns its keep without needing a single cipher.
+
+The theriac was among the most expensive substances in the Roman world. Sixty-four ingredients from Crete, India, Pontus, Illyria, Arabia and Lemnos. Compounded by an imperial physician. Aged for years — Galen insisted on twelve. Dissolved in Falernian wine, the most expensive wine in the empire. It was, by construction, a medicine for people who could pay. And its two most famous consumers were the two men who could pay for anything.
+
+Temple healing cost money too. Offerings, fees, the long stay. Aristides could afford thirty years of it because Aristides was rich.
+
+Revelation ends by putting a healing leaf on a public riverbank and pricing it at zero.
+
+Whatever else that is, it is a position on who medicine is for.`},
+
+{k:'table', head:'Two pharmacies', sub:'Written in the same language, in the same generation, for the same bodies',
+ cols:['Γαλήνη · the beast-medicine','ξύλον ζωῆς · the tree'],
+ rows:[['Sixty-four ingredients, compounded by an expert','One tree, twelve fruits, no preparation'],
+       ['Built out of a dead viper','Rooted in living water'],
+       ['Named after the beast — <i>θηριακή</i>','Stands where the beast no longer is'],
+       ['Authorised by a serpent god, or an emperor\'s physician','Flows from the throne'],
+       ['Its formula is secret, oral, guild-held','Published in the last chapter, to everyone'],
+       ['Must be aged for years before use','Bears fruit every month'],
+       ['Bought, and expensive','<b>δωρεάν</b> — free']],
+ script:`So here they are side by side. Two prescriptions, written in the same language, in the same generation, for the same bodies.
+
+Sixty-four ingredients, compounded by an expert — against one tree, twelve fruits, no preparation at all.
+
+Built out of a dead viper — against rooted in living water.
+
+Named after the beast — against standing where the beast no longer is.
+
+Authorised by a serpent god, or an emperor's physician — against flowing from the throne.
+
+Secret, oral, guild-held — against published in the last chapter, to everybody.
+
+Aged for years before you can use it — against fruiting every month.
+
+Bought, and expensive — against dōrean. Free.
+
+I want to flag this table honestly: it is a reading. It is my argument, not a discovery. And saying that out loud costs me nothing, because a thesis you have stated openly is far harder to attack than one you have smuggled in.`},
+
+/* ─────────── ACT VIII ─────────── */
+{k:'act', num:'VΙΙΙ', gr:'Η ΟΠΛΟΘΗΚΗ', en:'The armoury',
+ sub:'Every serious objection — and what I say back',
+ script:`Act eight. Now let me try to break my own argument, and show you what survives.`},
+
+{k:'obj', n:'1', they:'"The Beast is just Daniel."',
+ theyBody:'θηρίον is the ordinary Greek word for a beast. Revelation\'s beasts come from Daniel 7, where the Septuagint calls four empires <b>θηρία</b>. There is no pharmacy in it.',
+ you:'Agreed — and I will concede it immediately.',
+ youBody:'The Beast <i>is</i> Daniel\'s and it means empire. I am not arguing about where the image came from. I am arguing about what it <b>landed on</b>.<br><br>Then give them <b>13:3</b> — the death-wound that <b>was healed</b>, and the earth marvelling <i>because of the healing</i>. Daniel\'s beasts do nothing of the kind. <b>The healing is John\'s addition.</b><br><br>Then give them the address: he sent that chapter to seven cities, one of which he had already called Satan\'s throne.',
+ script:`Objection one, and it is the one you will get most often. The Beast is just Daniel.
+
+Thērion is the ordinary Greek word for a beast. Revelation's beasts are lifted from Daniel seven, where the Septuagint calls four empires thēria. There is no pharmacy in it.
+
+My answer is: agreed. Completely. I concede it in the first sentence, and I recommend you do too, because conceding it costs nothing and buys you the right to ask the next question.
+
+The Beast is Daniel's, and it means empire. I am not arguing about where the image came from. I am arguing about what it landed on.
+
+And then you give them 13:3. The death-wound that was healed, and the whole earth marvelling because of the healing. Daniel's four beasts do nothing of the kind — there is no healing anywhere in Daniel seven. That verb is John's own addition.
+
+And then you give them the address. He sent that chapter to seven named cities, one of which he had already called the throne of Satan, and which happened to house the most famous healing sanctuary in the Greek world.
+
+Never fight on the etymology. Fight on the destination.`},
+
+{k:'obj', n:'2', they:'"The wormwood is Jeremiah\'s." · "φαρμακεία just means sorcery."',
+ theyBody:'ἄψινθος comes from the Septuagint of Jeremiah — a prophetic judgement-formula. And φαρμακεία belongs to a Jewish vice-list tradition: Galatians 5:20, Exodus 7:11, <b>Isaiah 47:9–12</b> — and Isaiah 47 is Revelation 18\'s model chapter.',
+ you:'One I concede outright. The other I win outright.',
+ youBody:'<b>Wormwood:</b> concede it completely and fast. It is decoration on the argument, not structure. If you find yourself defending it hard, you have wandered off the strong ground — retreat to Pergamon.<br><br><b>φαρμακεία:</b> open the lexicon on them. The <i>first</i> sense is the use of drugs, esp. purgatives — Hippocrates. The <i>last</i> is <i>remedy, cure</i> — Aristotle. Witchcraft is third of four. And φαρμακεύς is glossed <b>poisoner, sorcerer, apothecary</b>.<br><br>"You are choosing one sense out of four and hiding the others. I am not doing the opposite. I am saying first-century Greek had <b>no way to say one without the other</b> — and that is precisely my point."',
+ script:`Objections two and three, and I am putting them together because they get opposite answers.
+
+The wormwood one: concede it completely, and fast. Apsinthos comes from the Septuagint of Jeremiah. It is a judgement formula. It is decoration on my argument, not structure. If you ever find yourself defending the wormwood hard, you have wandered off the strong ground. Retreat to Pergamon.
+
+But the pharmakeia one you can win outright, in front of any audience, on the lexicon alone.
+
+They will say: it belongs to a Jewish vice-list tradition — Galatians five, Exodus seven, Isaiah forty-seven — and Isaiah forty-seven is Revelation eighteen's model chapter. So it means witchcraft. Full stop.
+
+And you say: half right, and the half that is wrong is the important half.
+
+Then you open the lexicon on them. First sense: the use of drugs, especially purgatives, citing Hippocrates. Last sense: remedy, cure, citing Aristotle. Witchcraft is third of four. And pharmakeus is glossed poisoner, sorcerer, apothecary — one noun, no line inside it.
+
+"So when you tell me the word just means sorcery, you are choosing one sense out of four and hiding the others. I am not doing the opposite — I am not saying it means pharmacy. I am saying first-century Greek had no way to say one without the other. And that is precisely my point."`},
+
+{k:'obj', n:'3', they:'"He never mentions medicine."',
+ theyBody:'There is no positive evidence John knew any medical literature. Not a citation. Not a technical term used technically. The whole reading is <b>an argument from silence</b>.',
+ you:'Agreed — and that is exactly what my thesis predicts.',
+ youBody:'I am not claiming he read Galen. I am claiming he lived <b>next to a practice</b> — oral, temple-based, guild-held, whose god slept in the room with the patients. <b>If John had cited a treatise, that would undermine me</b>, because it would make this a literary borrowing rather than a lived polemic.<br><br>What I need is not a citation. It is <b>proximity plus reassignment</b>.<br><br><b>Proximity:</b> he names the city and calls it Satan\'s throne.<br><b>Reassignment:</b> serpent → deceiver · saviour → adversary · healing → spectacle · drug-working → deception · therapy → a free leaf.',
+ script:`And objection four, which is the real one. The serious one. The one I have not fully answered and am not going to pretend I have.
+
+There is no positive evidence that John knew any medical literature. Not a citation, not a technical term used technically. The whole reading is an argument from silence.
+
+And I say: agreed — and that is exactly what my thesis predicts.
+
+I am not claiming he read Galen. I am claiming he lived next to a practice. An oral, temple-based, guild-held pharmacy whose formulas were never written down and whose god slept in the room with the patients. If John had cited a medical treatise, that would actually undermine me, because it would make this a literary borrowing rather than a lived polemic.
+
+What I need is not a citation. What I need is proximity plus reassignment.
+
+Proximity: he names the city, and calls it the throne of Satan.
+
+Reassignment: serpent becomes deceiver. Saviour becomes adversary. Healing becomes spectacle. Drug-working becomes deception. And therapy becomes a free leaf on a public riverbank.
+
+That pattern is in the text and it does not depend on his library.
+
+But be honest about the residual. This objection never fully goes away, and it should not. It is what keeps this a thesis rather than a finding. Say that, and people will believe you about everything else.`},
+
+{k:'list', head:'ἡ βάσανος — the touchstone', sub:'What would strengthen this, and what would break it',
+ items:['<b>The magical papyri</b> — search the φαρμακ- root against ὄφις and ἔχιδνα. Serpent-drug practice in <i>cultic</i> rather than clinical settings would move this from hypothesis to institution.',
+        '<b>The Epidauros ἰάματα</b> — the cure-inscriptions. Look for named drugs in the god\'s prescriptions.',
+        '<b>θηριακ- outside medicine</b> — one cultic or civic occurrence is worth ten clinical ones.',
+        '<b>The Pergamene <i>lex sacra</i></b> — sanctuary regulations: what could be brought in, and by whom.',
+        '<b>Guild inscriptions from Asia</b> — find the aromatics traders and you have found John\'s actual audience.',
+        '<b>What would break it:</b> if first-century Asian φαρμακεία turns out overwhelmingly forensic and magical, with no clinical or cultic overlap, the reading narrows to metaphor. <i>Go looking for that too.</i>'],
+ script:`So what would settle it?
+
+Basanos is the touchstone — the black stone you rub gold against to find out whether it is real. Here is what I would rub this against, and I am saying it publicly so that somebody in this room can go and do it.
+
+The magical papyri: search the pharmak- root against serpent-words and against healing formulae. If serpent-drug practice shows up in cultic rather than clinical settings, the unwritten theriac stops being my hypothesis and becomes a documented institution.
+
+The cure-inscriptions from Epidauros: they record what the god prescribed. Look for named drugs.
+
+Any occurrence of theriak- outside a medical text — in an inscription, a curse tablet, a guild document. One of those is worth ten medical ones.
+
+The sacred law of the Pergamene sanctuary: what could be brought in, and by whom.
+
+And the guild inscriptions from Asia. Find the aromatics traders, and you have found John's actual audience.
+
+And finally, the honest one. What would break it. If first-century Asian pharmakeia turns out to be overwhelmingly forensic and magical, with no clinical or cultic overlap at all, then my reading narrows to metaphor.
+
+Go looking for that too. A thesis you have not tried to kill is not a thesis.`},
+
+{k:'close', gr:'δωρεάν', en:'freely',
+ line:'The last image in the Bible is a pharmacy.',
+ sub:'One tree. Twelve harvests. Leaves for the therapy of the nations. On a public riverbank, at no price.',
+ script:`Let me finish where the book finishes.
+
+For eighteen hundred years the most famous medicine in the world was named after a monster. It was compounded from a dead viper and sixty-three other things, most of them shipped from the far edges of the known world. It was authorised by an emperor's physician, or by a god with a snake on his staff who came to you while you were asleep. It was aged for twelve years. It was dissolved in the most expensive wine in the empire. And it worked — genuinely worked, for pain and cough and sleeplessness and a failing heart — for anyone who could afford it.
+
+And somewhere on a rock in the Aegean, a man with bad Greek and a memorised Bible wrote a book against the entire apparatus. He took the serpent and made it the deceiver. He took the saviour-title and gave it to somebody else. He took the healing and made it the reason the world worships a monster. He took the word for drug-working and used it to describe how an empire lies.
+
+And then he finished — the last thing in the whole Bible — by putting a tree on a public riverbank, with twelve harvests a year and leaves for the therapy of the nations.
+
+And he priced it at nothing.
+
+Thank you.`},
+
+{k:'sources', head:'Sources', sub:'Every claim in this talk, and where to check it',
+ groups:[['Ancient texts',[
+   'Galen, <i>De antidotis</i> I.6–7 (Kühn XIV) — the Andromachus poem and the prose recension',
+   'Galen, <i>De theriaca ad Pisonem</i>',
+   'Dioscorides, <i>De materia medica</i> 2.16–18 — viper flesh',
+   'Sophocles, <i>Philoctetes</i> 267 — χάραγμα ἐχίδνης',
+   'Homer, <i>Odyssey</i> 4.229–230',
+   'Revelation 2:12–17; 8:11; 12:9; 13:1–17; 14:10; 18:13, 18:23; 21:6; 22:2, 22:17',
+   'Ezekiel 47:12 (Septuagint); Jeremiah 9:15, 23:15 (LXX ἀψίνθιον); Daniel 7 (LXX θηρία); Isaiah 47:9–12',
+   'Aelius Aristides, <i>Ἱεροὶ Λόγοι</i> (Sacred Tales), 171 CE']],
+  ['Reference',[
+   'Liddell–Scott–Jones, s.vv. φάρμακον · φαρμακεία · φαρμακεύς · φαρμακός · θηρίον · χάραγμα · ποτήριον · ἀψίνθιον · θεραπεία',
+   'Perseus <i>canonical-greekLit</i> and <i>First1KGreek</i> — Revelation tlg0031.tlg027 · Galen <i>De antidotis</i> tlg0057.tlg078']],
+  ['Modern scholarship',[
+   '"The theriac in antiquity", <i>The Lancet</i> 379 (2012) — Andromachus, the 64 ingredients, Marcus Aurelius\' daily dose',
+   'Boudon-Millot, "À l\'origine de la thériaque : la recette d\'Andromaque" (2010)',
+   'Höld, Sirisoma, Ikeda, Narahashi & Casida, "α-Thujone… GABA type A receptor modulation", <i>PNAS</i> 97 (2000) 3826–31',
+   'Olsen, "Absinthe and γ-aminobutyric acid receptors", <i>PNAS</i> 97 (2000) 4417–18',
+   'Israelowich, <i>Society, Medicine and Religion in the Sacred Tales of Aelius Aristides</i> (Brill, 2012)']]],
+ note:'Educational and historical information only — not medical advice. Nothing in this talk describes a preparation anyone should attempt.',
+ script:`That is the reference list. It is on the handout, and everything I have quoted tonight can be checked against a published text — most of it free, online, in the original Greek.
+
+One closing note, which I have to say and mean: this is history, not medicine. Nothing in this talk is a recommendation, and nobody should be compounding anything they have heard about here tonight.
+
+Happy to take questions.`}
+]);
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   SLIDE RENDERING
+   ══════════════════════════════════════════════════════════════════════ */
+const stage=document.getElementById('stage');
+let idx=0, drawerOn=false;
+
+function art(k,max){ return k? `<div class="artbox" ${max?`style="max-width:${max}px"`:''}>${plateSVG(k)}</div>`:'' }
+function teiBtn(t){ return t? `<button class="tei" data-a="${t.a}" data-w="${t.w}" data-ref="${t.ref||''}" data-lbl="${t.lbl}"
+   style="margin-top:20px;font-size:13px;padding:5px 11px;border-color:rgba(92,143,201,.5);color:#a8c4e0;background:rgba(255,255,255,.05);
+   font-family:var(--serif);border-radius:3px;border-style:solid;border-width:1px;cursor:pointer">📖 open ${t.lbl}</button>`:'' }
+
+const RECIPE=`<div class="recipegrid">
+<p><span class="w">48</span> — squill lozenges <b>σκιλλητικοὶ ἀρτίσκοι</b></p>
+<p><span class="w">24</span> each — viper lozenges · hedychrous paste · black pepper · <b>opium</b></p>
+<p><span class="w">12</span> each — dry roses · Cretan scordium · brassica seed · Illyrian iris · Pontic agaric · <b>cinnamon</b> · liquorice juice · opobalsam</p>
+<p><span class="w">6</span> each — <b>myrrh</b> · saffron · ginger · rhubarb · cinquefoil · calamint · horehound · parsley · lavender · costus · white pepper · long pepper · dittany · rush flower · <b>frankincense</b> · terebinth resin · cassia · Indian nard</p>
+<p><span class="w">4</span> each — poley · seseli · storax · thlaspi · ammi · germander · ground pine · hypocist · malabathrum leaf · Celtic nard · gentian · anise · meum · fennel · Lemnian earth · chalcitis · <b>amomum</b> · sweet flag · phu · balsam fruit · St John's wort · acacia · gum · cardamom</p>
+<p><span class="w">2</span> each — carrot seed · galbanum · sagapenum · opopanax · asphalt · castoreum · centaury · birthwort</p>
+<p><span class="w">150</span> — <b>Attic honey</b></p></div>`;
+
+function build(d){
+  const w=x=>`<div class="wrap">${x}</div>`;
+  switch(d.k){
+   case 'title': return w(`${art(d.plate,300)}<h1 class="t" style="margin-top:22px">${d.gr}</h1>
+     <div style="font-family:var(--disp);font-size:calc(26px*var(--s));letter-spacing:.2em;color:#e4dccb;margin-bottom:20px">${d.en}</div>
+     <p class="sub" style="font-size:calc(22px*var(--s))">${d.sub}</p>
+     <p style="font-size:calc(14px*var(--s));color:#6d6479;font-style:italic;margin-top:8px">→ to advance · <b style="color:var(--gold-dim);font-style:normal">S</b> for your script · <b style="color:var(--gold-dim);font-style:normal">?</b> for everything else</p>`);
+   case 'act': return w(`<div class="actnum">${d.num}</div><h2 class="h" style="font-size:calc(58px*var(--s))">${d.gr}</h2>
+     <div style="font-family:var(--disp);font-size:calc(20px*var(--s));letter-spacing:.22em;color:#e4dccb;margin:6px 0 16px">${d.en}</div>
+     <p class="sub">${d.sub||''}</p>`);
+   case 'big': return w(`<p class="big">${d.line}</p>${d.sub?`<p class="bigsub">${d.sub}</p>`:''}`);
+   case 'list': return w(`<h2 class="h">${d.head}</h2><p class="sub">${d.sub||''}</p><ul class="pts">${d.items.map(i=>`<li>${i}</li>`).join('')}</ul>`);
+   case 'plate': return w(`<div class="side"><div>${art(d.plate)}</div><div>
+     <h2 class="h" style="font-size:calc(40px*var(--s))">${d.head}</h2><p class="sub" style="font-size:calc(19px*var(--s));margin-bottom:14px">${d.sub||''}</p>
+     <ul class="pts" style="margin-top:0">${(d.body||[]).map(i=>`<li style="font-size:calc(19px*var(--s));padding:7px 0 7px 26px">${i}</li>`).join('')}</ul>
+     ${teiBtn(d.tei)}</div></div>`);
+   case 'quote': return w(`${d.lead?`<p class="lead">${d.lead}</p>`:''}
+     ${d.plate?`<div class="side" style="grid-template-columns:minmax(0,300px) 1fr;gap:34px"><div>${art(d.plate)}</div><div>`:''}
+     <div class="gk"><div class="g">${d.gr}</div><div class="tr">${d.tr}</div><div class="c">${d.cite}</div></div>${teiBtn(d.tei)}
+     ${d.plate?`</div></div>`:''}`);
+   case 'twoquote': return w(`<h2 class="h" style="font-size:calc(40px*var(--s))">${d.head}</h2><p class="sub">${d.sub||''}</p>
+     <div class="row2"><div class="col"><div class="g">${d.a.gr}</div><div class="tr">${d.a.tr}</div><div class="c">${d.a.cite}</div></div>
+     <div class="col b"><div class="g">${d.b.gr}</div><div class="tr">${d.b.tr}</div><div class="c">${d.b.cite}</div></div></div>${teiBtn(d.tei)}`);
+   case 'table': return w(`<h2 class="h" style="font-size:calc(40px*var(--s))">${d.head}</h2><p class="sub">${d.sub||''}</p>
+     <table class="tb"><tr>${d.cols.map(c=>`<th>${c}</th>`).join('')}</tr>
+     ${d.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table>`);
+   case 'lex': return w(`<h2 class="h">${d.head}</h2><p class="sub">${d.sub||''}</p>
+     <div class="lexrow">${d.entries.map(e=>`<div class="n">${e[0]}</div><div class="d">${e[1]}</div><div class="s">${e[2]||''}</div>`).join('')}</div>
+     <div class="foot">${d.foot||''}</div>${teiBtn(d.tei)}`);
+   case 'recipe': return w(`<h2 class="h" style="font-size:calc(38px*var(--s))">${d.head}</h2><p class="sub" style="margin-bottom:12px">${d.sub||''}</p>${RECIPE}`);
+   case 'thesis': return w(`<h2 class="h" style="font-size:calc(44px*var(--s));color:var(--vio)">${d.head}</h2>
+     ${d.lines.map(l=>`<p class="thline">${l}</p>`).join('')}<div class="notbox">${d.not}</div>`);
+   case 'change': return w(`<h2 class="h">${d.head}</h2><p class="sub">${d.sub||''}</p>
+     ${d.rows.map(r=>`<div class="chg">
+       <div class="cell"><div class="gr">${r[0]}</div><div class="en">${r[1]}</div><div class="ex">${r[2]}</div></div>
+       <div class="ar">→</div>
+       <div class="cell r"><div class="gr">${r[3]}</div><div class="en">${r[4]}</div><div class="ex">${r[5]}</div></div></div>`).join('')}`);
+   case 'obj': return w(`<div class="eyebrow">OBJECTION ${d.n}</div>
+     <div class="objgrid">
+       <div class="objcard they"><h4>THEY SAY</h4><p class="lead2">${d.they}</p><div class="bd">${d.theyBody}</div></div>
+       <div class="objcard you"><h4>YOU SAY</h4><p class="lead2">${d.you}</p><div class="bd">${d.youBody}</div></div>
+     </div>`);
+   case 'close': return w(`<div style="text-align:center">
+     <div style="font-family:var(--disp);font-size:calc(80px*var(--s));color:var(--gold);letter-spacing:.1em;text-shadow:0 0 50px rgba(217,171,78,.3)">${d.gr}</div>
+     <div style="font-style:italic;font-size:calc(22px*var(--s));color:var(--bone-dim);margin:4px 0 34px">${d.en}</div>
+     <p class="big" style="margin:0 auto 20px;max-width:20em">${d.line}</p>
+     <p class="bigsub" style="margin:0 auto;max-width:34em">${d.sub}</p></div>`);
+   case 'sources': return w(`<h2 class="h" style="font-size:calc(36px*var(--s))">${d.head}</h2><p class="sub" style="margin-bottom:16px">${d.sub||''}</p>
+     <div class="srcgrid">${d.groups.map(g=>`<div><h5>${g[0]}</h5><ul>${g[1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>
+     <div class="disclaim">${d.note}</div>`);
+   default: return w('<p>?</p>');
+  }
+}
+
+let ACT='';
+DECK.forEach((d,i)=>{
+  const el=document.createElement('div');
+  el.className='slide'; el.dataset.i=i; el.innerHTML=build(d);
+  stage.appendChild(el); d._el=el;
+});
+function actFor(i){ let a=''; for(let j=0;j<=i;j++) if(DECK[j].k==='act') a=DECK[j].gr+' · '+DECK[j].en; return a }
+
+function show(n,noScroll){
+  idx=Math.max(0,Math.min(DECK.length-1,n));
+  DECK.forEach((d,i)=>d._el.classList.toggle('on',i===idx));
+  const el=DECK[idx]._el; if(!noScroll) el.scrollTop=0;
+  greekify(el);
+  document.getElementById('count').textContent=(idx+1)+' / '+DECK.length;
+  document.getElementById('act').textContent=actFor(idx);
+  document.getElementById('prog').style.width=((idx+1)/DECK.length*100)+'%';
+  const sc=DECK[idx].script||'';
+  document.getElementById('scriptBody').innerHTML=sc.split(/\n\s*\n/).map(p=>`<p>${p}</p>`).join('');
+  const nx=DECK[idx+1];
+  document.getElementById('nextUp').textContent = nx? 'Next — '+(nx.gr||nx.head||nx.line||nx.en||'').replace(/<[^>]*>/g,'').slice(0,90) : 'End of talk.';
+  document.getElementById('drawer').scrollTop=0;
+  const inr=document.querySelector('#drawer .in'); if(inr) inr.scrollTop=0;
+}
+function setDrawer(on){
+  drawerOn=on;
+  document.getElementById('drawer').classList.toggle('on',on);
+  document.getElementById('bScript').classList.toggle('on',on);
+  DECK.forEach(d=>d._el.classList.toggle('drawer',on));
+}
+document.getElementById('next').onclick=()=>show(idx+1);
+document.getElementById('prev').onclick=()=>show(idx-1);
+document.getElementById('bScript').onclick=()=>setDrawer(!drawerOn);
+document.getElementById('bHelp').onclick=()=>document.getElementById('help').classList.add('on');
+document.getElementById('helpClose').onclick=()=>document.getElementById('help').classList.remove('on');
+document.getElementById('bFull').onclick=()=>{ try{ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen() }catch(e){ toast('Fullscreen is blocked in this viewer — open the file in a browser tab') } };
+let scale=1;
+function setScale(v){ scale=Math.max(.55,Math.min(1.5,v)); document.documentElement.style.setProperty('--s',scale) }
+document.getElementById('bBig').onclick=()=>setScale(scale+.08);
+document.getElementById('bSmall').onclick=()=>setScale(scale-.08);
+
+/* handout */
+function buildHandout(){
+  const b=document.getElementById('hoBody');
+  b.innerHTML=`<h1>ΘΗΡΙΑΚΗ — The Beast-Medicine</h1>
+    <p style="font-style:italic;color:#9d93aa;margin-bottom:26px">Speaker's script. ${DECK.length} slides, about forty minutes.
+    Print this, or print to PDF, for paper notes.</p>`
+   + DECK.map((d,i)=>{
+      const ttl=(d.gr||d.head||d.line||d.en||'').replace(/<[^>]*>/g,'');
+      const sub=(d.sub||d.tr||'').replace(/<[^>]*>/g,'');
+      return `<section><div class="num">SLIDE ${String(i+1).padStart(2,'0')}${d.k==='act'?' · SECTION':''}</div>
+        <h3>${ttl}</h3>${sub?`<div class="sl">${sub}</div>`:''}
+        ${(d.script||'').split(/\n\s*\n/).map(p=>`<p class="sc">${p}</p>`).join('')}</section>`;
+     }).join('');
+}
+document.getElementById('bHand').onclick=()=>{ buildHandout(); document.getElementById('handout').classList.add('on') };
+document.getElementById('hoClose').onclick=()=>document.getElementById('handout').classList.remove('on');
+
+/* keys */
+addEventListener('keydown',e=>{
+  if(e.target.tagName==='TEXTAREA'||e.target.tagName==='INPUT'){ if(e.key==='Escape')e.target.blur(); return }
+  const rd=document.getElementById('reader');
+  if(rd&&rd.classList.contains('open')){ if(e.key==='Escape') closeReader(); return }
+  if(document.getElementById('handout').classList.contains('on')){ if(e.key==='Escape') document.getElementById('handout').classList.remove('on'); return }
+  if(document.getElementById('help').classList.contains('on')){ if(e.key==='Escape') document.getElementById('help').classList.remove('on'); return }
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); show(idx+1) }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); show(idx-1) }
+  else if(e.key==='s'||e.key==='S'){ setDrawer(!drawerOn) }
+  else if(e.key==='h'||e.key==='H'){ buildHandout(); document.getElementById('handout').classList.add('on') }
+  else if(e.key==='f'||e.key==='F'){ document.getElementById('bFull').click() }
+  else if(e.key==='Home'){ show(0) } else if(e.key==='End'){ show(DECK.length-1) }
+  else if(e.key==='Escape'){ document.getElementById('pop').classList.remove('on') }
+});
+/* swipe */
+let tx=null;
+stage.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+stage.addEventListener('touchend',e=>{ if(tx===null)return; const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>60) show(idx+(dx<0?1:-1)); tx=null },{passive:true});
+
+show(0);
+/* no auto-popup — nothing surprises you on stage. The ? button pulses briefly instead. */
+const hb=document.getElementById('bHelp');
+hb.animate([{boxShadow:'0 0 0 0 rgba(217,171,78,.6)'},{boxShadow:'0 0 0 9px rgba(217,171,78,0)'}],
+  {duration:1400,iterations:5});
+</script>
+</body>
+</html>
